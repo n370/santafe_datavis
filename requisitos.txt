@@ -1,0 +1,5 @@
+- Servidores e bases de dados:
+  * Valores das variáveis de acesso.
+  * Host: IP e porta dos servidores.
+  * Usuário e senha com privilégios de administrador para realizar querys e exportar dados.
+  * 
