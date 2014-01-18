@@ -13,9 +13,8 @@ var mapa = new ol.Map({
     target: 'map'
   });
 
-/*d3.json("edad.json", function(err, data) {
+var edad = d3.json("edad.json", function(err, data) {
   if (!err) {
-    var edad = data;
+    console.log(data);
   }
-  return edad;
-});*/
+});
