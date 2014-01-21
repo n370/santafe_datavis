@@ -10,6 +10,8 @@ module.exports = function routes(req, res) {
     fs.createReadStream(__dirname + '/public' + '/main.js').pipe(res);
   } else if (req.url === '/style.css') {
     fs.createReadStream(__dirname + '/public' + '/style.css').pipe(res);
+  } else if (req.url === '/data/cp1-p_santa_fe.csv') {
+    fs.createReadStream(__dirname + '/public' + '/data/cp1-p_santa_fe.csv').pipe(res);
   } else {  
     res.end('404', '404');
   }
