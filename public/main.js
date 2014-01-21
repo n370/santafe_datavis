@@ -30,3 +30,13 @@ d3.json("edad.json", function(err, data) {
 var d3vars = {};
 
 d3vars.body = d3.select('body');
+
+d3vars.body
+  .append('svg')
+  .attr('width', 100)
+  .attr('height', 100)
+  .append('circle')
+  .attr('cx', 50)
+  .attr('cy', 50)
+  .attr('r', 50)
+  .style('fill', 'gold');
