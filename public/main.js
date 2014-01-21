@@ -1,4 +1,9 @@
-var body = document.body;
+/*
+Author: Dylson Valente Neto
+Email: dvalenteneto@santafe.gov.ar
+*/
+
+/************* Using ol3js  *************/
 
 var ver = new ol.View2D({
       center: [-6757907.320209994, -3717553.603945332],
@@ -13,9 +18,15 @@ var mapa = new ol.Map({
     target: 'map'
   });
 
+/************ Using d3js ************/
+
 var edad;
 d3.json("edad.json", function(err, data) {
   if (!err) {
     edad = data;
   }
 });
+
+var d3vars = {};
+
+d3vars.body = d3.select('body');
