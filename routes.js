@@ -1,3 +1,8 @@
+/*
+Author: Dylson 'n370' Valente Neto
+Email: dvalenteneto@santafe.gov.ar
+*/
+
 var url = require('url');
 var fs = require('fs');
 

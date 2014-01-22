@@ -1,3 +1,8 @@
+/*
+Author: Dylson 'n370' Valente Neto
+Email: dvalenteneto@santafe.gov.ar
+*/
+
 /*** Import modules ***/
 var routes = require('./routes');
 var httpServer = require('http').createServer(routes);
