@@ -2,6 +2,11 @@
 Author: Dylson 'n370' Valente Neto
 Email: dvalenteneto@santafe.gov.ar
 */
+var middleWidth = window.innerWidth / 2;
+
+window.onresize = function() {
+  middleWidth = window.innerWidth / 2;
+}
 
 /************* Using ol3js  *************/
 
@@ -27,34 +32,49 @@ var d3vars = {};
 
 d3vars.body = d3.select('body');
 
-/*
+d3vars.linearScale = d3.scale.linear()
+  .domain([0,5000000])
+  .range([0,200]);
+
 d3vars.graph = d3vars.body
   .append('svg')
-  .attr('width', 100)
-  .attr('height', 100);
-d3vars.circle = d3vars.graph.append('circle')
-  .attr('cx', 50)
-  .attr('cy', 50)
-  .attr('r', 50)
-  .style('fill', 'gold');
-*/
+  .attr('width', '100%')
+  .attr('height', '400px');
 
-d3.csv('data/cp1-p_santa_fe.csv', function(err, d) {
+d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
+    d3vars.graph.selectAll('circle')
+      .data(data)
+      .enter()
+      .append('circle')
+      .attr('cx', middleWidth)
+      .attr('cy', 200)
+      .attr('r', function(datum) { return d3vars.linearScale(datum['Población 2010']) })
+      .style('stroke', 'gold')
+      .style('fill-opacity', '0');
+    var virgula; 
     d3vars.body.selectAll('p')
-      .data(d)
+      .data(data)
       .enter()
       .append('p')
       .attr('class', 'title')
+      .style('display', 'inline')
       .text(function(datum, index) { 
         if (datum.Departamento === 'La Capital') {
-          d3.select(this).attr('class','title red-text');
-          console.log(this);
+          d3.select(this)
+            .attr('class','title red-text');
+          d3.select(this).innerHTML = '<p class="title">, </p>';
+          return index + ' ' + datum.Departamento + '</p>';
         }
-        return index + ' ' + datum.Departamento; 
+        if (index === data.length - 1) {
+          return index + ' ' + datum.Departamento + '.';
+        } else {
+          return index + ' ' + datum.Departamento + ', '; 
+        }
       });
   }
 });
+
 
 /*
 for (var i = 0; i < demografia.length; i++) {
