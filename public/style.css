@@ -11,12 +11,17 @@ body {
 h1 { 
   text-align: center;
 }
+svg, div {
+  margin: 10px auto 10px auto;
+  display: block;
+}
 #map {
-  height: 400px;
+  margin: 0px;
+  height: 600px;
 }
 
 .title {
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
 }
 

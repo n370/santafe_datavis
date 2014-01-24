@@ -25,12 +25,13 @@ var mapa = new ol.Map({
 
 d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
+    data = data.slice(1, data.length - 1);
     var virgula; 
-    var barWidth = 20;
+    var barWidth = 40;
     var width = (barWidth + 10) * data.length;
-    var height = 400;
+    var height = 200;
     var widthScale = d3.scale.linear().domain([0, data.length]).range([0, width]);  
-    var heightScale = d3.scale.linear().domain([0, d3.max(data, function(datum) { return datum['Población 2010']; })]).rangeRound([0, height]);
+    var heightScale = d3.scale.linear().domain([0, d3.max(data, function(datum) { return parseInt(datum['Población 2010']); })]).range([0, height]);
     var body = d3.select('body');
     var graph = body.append('svg').attr('width', width).attr('height', height);
     var bars = graph.selectAll('rect').data(data).enter().append('svg:rect');
@@ -39,9 +40,9 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .attr('y', function(datum) { return height - heightScale(datum['Población 2010']); })
       .attr('height', function(datum) { return heightScale(datum['Población 2010']); })
       .attr('width', barWidth)
-      .style('fill', 'gold');
+      .style('fill', 'red');
     
-    var paragraphs = body.selectAll('p')
+    var paragraphs = body.append('div').style('width', width + 'px').selectAll('p')
       .data(data)
       .enter()
       .append('p');
