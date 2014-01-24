@@ -25,32 +25,62 @@ var mapa = new ol.Map({
 
 d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
-    data = data.slice(1, data.length - 1);
+    data.sort(function(a,b) {
+      return d3.descending(parseInt(a['Población 2010']), 
+        parseInt(b['Población 2010']));
+    });
+
     var virgula; 
-    var barWidth = 40;
-    var width = (barWidth + 10) * data.length;
-    var height = 200;
-    var widthScale = d3.scale.linear().domain([0, data.length]).range([0, width]);  
-    var heightScale = d3.scale.linear().domain([0, d3.max(data, function(datum) { return parseInt(datum['Población 2010']); })]).range([0, height]);
-    var body = d3.select('body');
-    var graph = body.append('svg').attr('class', 'centered_block').attr('width', width).attr('height', height);
-    var bars = graph.selectAll('rect').data(data).enter().append('svg:rect');
+    var barThickness = 15;
+    var width = 900;
+    var height = (barThickness + 5) * data.length;
+    
+    var widthScale = d3.scale.linear()
+      .domain([0, d3.max(data, function(datum) { 
+        return parseInt(datum['Población 2010']); 
+      })])
+      .range([0, width]);
+    
+    var heightScale = d3.scale.linear()
+      .domain([0, data.length])
+      .range([0, height]);  
+    
+    var graph = d3.select('#graph');
+    
+    var bars = graph.append('svg')
+      .attr('class', 'centered_block')
+      .attr('width', width)
+      .attr('height', height)
+      .style('background', 'rgba(255,255,255,1)')
+      .style('box-shadow', '0.5px 1px 3px -1px rgba(0,0,0,1)')
+      .style('padding', '10px');
+
+    var bar = bars.selectAll('rect')
+      .data(data)
+      .enter()
+      .sort()
+      .append('svg:rect');
      
-    bars.attr('x', function(datum, index) { return widthScale(index); })
-      .attr('y', height)
-      .attr('height', function(datum) { return heightScale(datum['Población 2010']); })
-      .attr('width', barWidth)
+    bar.attr('x', 0)
+      .attr('y', function(datum, index) { return heightScale(index); })
+      .attr('height', barThickness)
+      .attr('width', 0)
       .style('fill', 'red')
       .transition()
       .duration(2000)
-      .attr('y', function(datum) { return height - heightScale(datum['Población 2010']); })
+      .attr('width', function(datum) { 
+        return widthScale(datum['Población 2010']); 
+      });
     
-    var paragraphs = body.append('div').attr('class', 'centered_block').style('width', width + 'px').selectAll('p')
+    var textBlock = graph.append('div')
+      .attr('class', 'centered_block')
+      .style('width', width + 'px')
+      .selectAll('p')
       .data(data)
       .enter()
       .append('p');
      
-    paragraphs.attr('class', 'title')
+    textBlock.attr('class', 'title')
       .style('display', 'inline')
       .text(function(datum, index) {
         if (datum.Departamento === 'La Capital') {
@@ -70,10 +100,3 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       });
   }
 });
-
-
-/*
-for (var i = 0; i < demografia.length; i++) {
-  console.log(demografia[i].Departamento);
-}
-*/
