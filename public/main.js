@@ -5,7 +5,7 @@ Email: dvalenteneto@santafe.gov.ar
 
 /************* Using ol3js  *************/
 
-var controle = new ol.Collection([ new ol.interaction.DragPan() ]);
+var controle = new ol.Collection([ /*new ol.interaction.DragPan()*/ ]);
   
 var ver = new ol.View2D({
   center: [-6757907.320209994, -3717553.603945332],
@@ -33,16 +33,19 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
     var widthScale = d3.scale.linear().domain([0, data.length]).range([0, width]);  
     var heightScale = d3.scale.linear().domain([0, d3.max(data, function(datum) { return parseInt(datum['Población 2010']); })]).range([0, height]);
     var body = d3.select('body');
-    var graph = body.append('svg').attr('width', width).attr('height', height);
+    var graph = body.append('svg').attr('class', 'centered_block').attr('width', width).attr('height', height);
     var bars = graph.selectAll('rect').data(data).enter().append('svg:rect');
      
     bars.attr('x', function(datum, index) { return widthScale(index); })
-      .attr('y', function(datum) { return height - heightScale(datum['Población 2010']); })
+      .attr('y', height)
       .attr('height', function(datum) { return heightScale(datum['Población 2010']); })
       .attr('width', barWidth)
-      .style('fill', 'red');
+      .style('fill', 'red')
+      .transition()
+      .duration(2000)
+      .attr('y', function(datum) { return height - heightScale(datum['Población 2010']); })
     
-    var paragraphs = body.append('div').style('width', width + 'px').selectAll('p')
+    var paragraphs = body.append('div').attr('class', 'centered_block').style('width', width + 'px').selectAll('p')
       .data(data)
       .enter()
       .append('p');

@@ -11,7 +11,7 @@ body {
 h1 { 
   text-align: center;
 }
-svg, div {
+.centered_block {
   margin: 10px auto 10px auto;
   display: block;
 }
