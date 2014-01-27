@@ -18,6 +18,30 @@ body {
   margin: 0 auto 0 auto;
 }
 .title {
-  font-size: 1em;
+  font-size: 0.95em;
   font-weight: bold;
+}
+.x.axis path {
+  fill: none;
+  stroke: none;
+  stroke-width: 2;
+}
+.x.axis line {
+  stroke-width: 1;
+  stroke: gray;
+  stroke-dasharray: 2 5;
+  stroke-dashoffset: 5;
+}
+
+.axis {
+  font-size: 0.7em;
+}
+.y.label {
+  font-size: 0.7em;
+}
+svg {
+  background: rgba(247,241,225,1);
+}
+.notes { 
+  font-size: 0.7em;
 }
