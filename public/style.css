@@ -4,37 +4,20 @@ Email: dvalenteneto@santafe.gov.ar
 */
 
 body {
-  background-color: white;
+  background: rgba(255,255,255,1);
   margin: 0; 
   font-family: sans-serif;
 }
-h1 { 
-  text-align: center;
-}
-.centered_block {
-  margin: 10px auto 10px auto;
-  display: block;
-}
-section {
-  height: 100vh;
-}
 #map {
   margin: 0px;
-  height: 100%;
-  position: relative;
+  width: 100%;
+  height: 400px;
 }
-.relatively-centered {
-  left: 0;
-  right: 0;
-  position: absolute;
-  z-index: 1;
-  top: 100px;
+.centered {
+  width: 960px;
+  margin: 0 auto 0 auto;
 }
 .title {
   font-size: 1em;
   font-weight: bold;
-}
-
-.red-text {
-  color: red;
 }

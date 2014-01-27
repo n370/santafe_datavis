@@ -26,13 +26,13 @@ var mapa = new ol.Map({
 d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
     data.sort(function(a,b) {
-      return d3.descending(parseInt(a['Población 2010']), 
+      return d3.ascending(parseInt(a['Población 2010']), 
         parseInt(b['Población 2010']));
     });
 
     var virgula; 
-    var barThickness = 15;
-    var width = 900;
+    var barThickness = 20;
+    var width = 960;
     var height = (barThickness + 5) * data.length;
     
     var widthScale = d3.scale.linear()
@@ -45,47 +45,46 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .domain([0, data.length])
       .range([0, height]);  
     
-    var graph = d3.select('#graph');
-    
-    var bars = graph.append('svg')
-      .attr('class', 'centered_block')
+    d3.select('body')
+      .insert('div', 'script')
+      .attr('id', 'graph_01')
+      .attr('class', 'centered')
+      .append('svg')
       .attr('width', width)
       .attr('height', height)
-      .style('background', 'rgba(255,255,255,1)')
-      .style('box-shadow', '0.5px 1px 3px -1px rgba(0,0,0,1)')
-      .style('padding', '10px');
-
-    var bar = bars.selectAll('rect')
+      .selectAll('rect')
       .data(data)
       .enter()
-      .sort()
-      .append('svg:rect');
-     
-    bar.attr('x', 0)
+      .append('svg:rect')
+      .attr('x', 0)
       .attr('y', function(datum, index) { return heightScale(index); })
       .attr('height', barThickness)
       .attr('width', 0)
-      .style('fill', 'red')
+      .style('fill', function(datum, index) {
+        if (index %  2 === 0) {
+          return 'purple';
+        }
+        return 'blue';
+      })
       .transition()
       .duration(2000)
       .attr('width', function(datum) { 
         return widthScale(datum['Población 2010']); 
       });
-    
-    var textBlock = graph.append('div')
-      .attr('class', 'centered_block')
+      
+    d3.select('#graph_01')
+      .append('div')
       .style('width', width + 'px')
       .selectAll('p')
       .data(data)
       .enter()
-      .append('p');
-     
-    textBlock.attr('class', 'title')
+      .append('p')
+      .attr('class', 'title')
       .style('display', 'inline')
       .text(function(datum, index) {
         if (datum.Departamento === 'La Capital') {
           virgula = index;
-          d3.select(this).attr('class','title red-text');
+          d3.select(this).style('color', 'purple');
           return index + ' ' + datum.Departamento;
         }
         if (index === data.length - 1) {
