@@ -23,6 +23,32 @@ var mapa = new ol.Map({
 
 /************ Using d3js ************/
 
+d3.json("data/santafe-provincia.topojson", function(error, data) {
+var width = 960,
+    height = 400;
+
+var svg = d3.select("body").append("div")
+    .attr('class', 'centered')
+    .append('svg')
+    .attr("width", width)
+    .attr("height", height);
+
+var projection = d3.geo.mercator()
+    .center([-61, -31.2])
+    .scale(2500)
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var santafe = topojson.feature(data, data.objects.santafe);
+
+svg.append("path")
+    .datum(santafe)
+    .attr("d", path);
+
+});
+
 d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
 
@@ -139,7 +165,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
     notes
       .append('tspan')
       .attr('x', 20)
-      .attr('dy', 15)
+      .attr('dy', 13)
       .text('Fuente: INDEC. Censo Nacional de Población, Hogares y Viviendas 2001 y 2010.'); 
 
   function update() {
