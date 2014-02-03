@@ -1,3 +1,4 @@
 *.swp
 *.txt
 .DS_Store
+public/data/temp
