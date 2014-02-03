@@ -22,29 +22,37 @@ var mapa = new ol.Map({
 });
 
 /************ Using d3js ************/
+d3.json('data/santafe-departamentos.topojson', function (error, data) {
+  console.log(data);
+  var width = 960,
+      height = 400;
+  
+  var svg = d3.select('body').append('div')
+      .attr('class', 'centered')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height);
 
-d3.json("data/santafe-provincia.topojson", function(error, data) {
-var width = 960,
-    height = 400;
+  var projection = d3.geo.mercator()
+      .center([-61, -31.2])
+      .scale(2500)
+      .translate([width / 2, height / 2]);
 
-var svg = d3.select("body").append("div")
-    .attr('class', 'centered')
-    .append('svg')
-    .attr("width", width)
-    .attr("height", height);
+  var path = d3.geo.path()
+      .projection(projection);
 
-var projection = d3.geo.mercator()
-    .center([-61, -31.2])
-    .scale(2500)
-    .translate([width / 2, height / 2]);
+  var departamentos = topojson.feature(data, data.objects['santafe-departamentos']);
 
-var path = d3.geo.path()
-    .projection(projection);
-
-var santafe = topojson.feature(data, data.objects.santafe);
-
-svg.append("path")
-    .datum(santafe)
+  svg.selectAll(".departamento")
+    .data(departamentos.features)
+    .enter()
+    .append("path")
+    .attr("class", function(datum) { 
+      var id = datum.id.toLowerCase();
+      id = id.split(' ');
+      id = id.join('_');
+      return "departamento " + id; 
+    })
     .attr("d", path);
 
 });

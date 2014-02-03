@@ -44,3 +44,6 @@ svg {
 .notes { 
   font-size: 0.7em;
 }
+.departamento.la_capital {
+  fill: rgba(255,0,0,1)
+}
