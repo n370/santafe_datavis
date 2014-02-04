@@ -3,26 +3,6 @@ Author: Dylson 'n370' Valente Neto
 Email: dvalenteneto@santafe.gov.ar
 */
 
-/************* Using ol3js  *************/
-
-var controle = new ol.Collection([ /*new ol.interaction.DragPan()*/ ]);
-  
-var ver = new ol.View2D({
-  center: [-6757907.320209994, -3717553.603945332],
-  zoom: 14
-});
-
-var camada = [ new ol.layer.Tile({ source: new ol.source.OSM() }) ];
-    
-var mapa = new ol.Map({
-  layers: camada,
-  interactions: controle,
-  view: ver,
-  target: 'map'
-});
-
-/************ Using d3js ************/
-
 var test;
 
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
