@@ -22,8 +22,12 @@ var mapa = new ol.Map({
 });
 
 /************ Using d3js ************/
+
+var test;
+
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
-  console.log(data);
+  test = data;
+  console.log(test);
   var width = 960,
       height = 400;
   
