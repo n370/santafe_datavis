@@ -8,16 +8,52 @@ body {
 }
 
 header {
-  border-color: red;
-  border-width: 1px;
-  border-style: solid;
-  padding: 2em;
+  width: 100%;
+  background: rgba(255,0,0,1);
+  position: fixed;
 }
 
-.header_items {
-  height: 5em;
-  margin: 1em;
-  border-color: red;
+section {
+  z-index: -1;
+  position: relative;
+  top: 100px;
+}
+
+.box {
+  height: 8000px;
+  background: rgba(0,255,0,1);
+}
+
+.green {
+  border-color: green;
+}
+
+.purple {
+  border-color: purple;
+}
+
+.blue {
+  border-color: blue;
+}
+
+.grid {
+  display: flex;
+  height: 100px;
+  align-items: center;
+}
+
+.grid_cell {
+  flex: 1;
+}
+
+.logo {
+  width: 200px;
+}
+
+.menu_item {
+  text-align: center;
+}
+.border {
   border-width: 1px;
   border-style: solid;
 }

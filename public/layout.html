@@ -6,15 +6,26 @@ Email: dvalenteneto@santafe.gov.ar
 <!doctype html>
 <html>
 <head>
+  <script type="text/javascript">
+    var agreement = confirm('This website is built upon the latest web technologies. Things will break if you\'re accessing it using an old browser.\n\nPress Cancel to abort.\n\n'); 
+    if (agreement !== true) {
+    	window.stop();
+    } 
+  </script>
   <title>Instituto Provincial de Estadística y Censos – IPEC</title>
   <link rel='stylesheet' type='text/css'  href='layout.css'/>
 </head>
 <body>
   <header>
-    <div class="header_items"></div>
-    <div class="header_items"></div>
-    <div class="header_items"></div>
+  	<div class="grid">
+	  <img class='logo' src='' />
+      <a href='' class="grid_cell border purple menu_item">Mapas</a>
+      <a href='' class="grid_cell border blue menu_item">Credito</a>
+    </div>
   </header>
+  <section>
+  	<div class="box"></div>
+  </section>
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="" charset="utf-8"></script>
