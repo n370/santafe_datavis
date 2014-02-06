@@ -11,7 +11,7 @@ d3.json('data/santafe-departamentos.topojson', function (error, data) {
   var width = 960,
       height = 400;
   
-  var svg = d3.select('body').append('div')
+  var svg = d3.select('section').append('div')
       .attr('class', 'centered')
       .append('svg')
       .attr('width', width)
@@ -81,7 +81,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .tickSize(-height)
       .tickFormat(function(datum) { return (datum / 1e6) + "M"; });
     
-    var graph_01 = d3.select('body')
+    var graph_01 = d3.select('section')
       .insert('div', 'script')
       .attr('id', 'graph_01')
       .attr('class', 'centered')
