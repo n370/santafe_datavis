@@ -8,46 +8,47 @@ var test;
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
   test = data;
   console.log(test);
-  var width = 960,
-      height = 400;
+  var width = 100,
+      height = 960;
   
-  var svg = d3.select('section').append('div')
-      .attr('class', 'centered')
+  var svg = d3.select('section')
       .append('svg')
-      .attr('width', width)
+      .attr('width', width + '%')
       .attr('height', height);
 
   var projection = d3.geo.mercator()
-      .center([-61, -31.2])
-      .scale(2500)
-      .translate([width / 2, height / 2]);
+      .center([-59, -29.5])
+      .scale(6500);
 
   var path = d3.geo.path()
       .projection(projection);
 
   var departamentos = topojson.feature(data, data.objects['santafe-departamentos']);
 
-  svg.selectAll(".departamento")
+  var mapa = svg.selectAll(".departamento")
     .data(departamentos.features)
     .enter()
+    .append('g')
+    .attr('class', 'departamento');
+  mapa
     .append("path")
-    .attr("class", function(datum) { 
+    .attr("id", function(datum) { 
       var id = datum.id.toLowerCase();
       id = id.split(' ');
       id = id.join('_');
-      return "departamento " + id; 
+      return id; 
     })
     .attr("d", path);
 
 });
 
-d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
+/*d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
 
     // Convert strings to numbers.
     data.forEach(function(datum) {
-      datum['Población 2001'] = parseInt(datum['Población 2001']);
-      datum['Población 2010'] = parseInt(datum['Población 2010']);
+      datum['Población 2001'] = Number(datum['Población 2001']);
+      datum['Población 2010'] = Number(datum['Población 2010']);
     });
     
     // Sort data ascending by 'Población 2010'.
@@ -82,16 +83,17 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .tickFormat(function(datum) { return (datum / 1e6) + "M"; });
     
     var graph_01 = d3.select('section')
-      .insert('div', 'script')
+      .append('div')
       .attr('id', 'graph_01')
       .attr('class', 'centered')
       .append('svg')
+      .attr('id', 'graph_01_svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-    var title = d3.select('svg')
+    var title = d3.select('graph_01_svg')
       .append('text')
       .attr('class', 'title')
       .attr('y', 20);
@@ -164,4 +166,4 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
     
 }
   }
-});
+});*/
