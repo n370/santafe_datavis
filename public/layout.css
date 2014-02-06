@@ -24,18 +24,6 @@ section {
   background: rgba(0,255,0,1);
 }
 
-.green {
-  border-color: green;
-}
-
-.purple {
-  border-color: purple;
-}
-
-.blue {
-  border-color: blue;
-}
-
 .grid {
   display: flex;
   height: 100px;
@@ -51,9 +39,6 @@ section {
 }
 
 .menu_item {
+  height: 100%;
   text-align: center;
-}
-.border {
-  border-width: 1px;
-  border-style: solid;
 }
