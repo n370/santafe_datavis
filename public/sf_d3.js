@@ -3,9 +3,23 @@ Author: Dylson 'n370' Valente Neto
 Email: dvalenteneto@santafe.gov.ar
 */
 
+var po = org.polymaps;
+var drag = po.drag();
+var zoom = po.wheel();
+
+var map = po.map()
+    .container(document.getElementsByTagName("section")[0].appendChild(po.svg("svg")))
+    .add(po.geoJson().url('data/departamentos.geojson'))
+    .center({lat: -31, lon: -61})
+    .zoomRange([3, 20])
+    .zoom(7);
+
+drag.map(map);
+zoom.map(map);
+
 var test;
 
-d3.json('data/santafe-departamentos.topojson', function (error, data) {
+/*d3.json('data/santafe-departamentos.topojson', function (error, data) {
   test = data;
   console.log(test);
   var width = 100,
@@ -40,7 +54,7 @@ d3.json('data/santafe-departamentos.topojson', function (error, data) {
     })
     .attr("d", path);
 
-});
+});*/
 
 /*d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
