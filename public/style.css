@@ -24,9 +24,11 @@ header {
 
 section {
   z-index: -1;
-  position: relative;
-  top: 80px;
-  padding-top: 50px;
+  height: 100%;
+}
+
+.map {
+  height: calc(100% - 10px);
 }
 
 .grid {
@@ -94,10 +96,11 @@ section {
   font-size: 0.7em;
 }
 
-.departamento {
-  cursor: pointer;
+.departamento, .layer {
   fill: rgba(247,241,225,1);
 }
-.departamento:hover {
+
+.layer path:hover, .departamento path:hover {
   opacity: 0.9;
+  cursor: pointer;
 }
