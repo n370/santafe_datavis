@@ -18,7 +18,7 @@ Actualmente trabajamos las visualizaciones en caracter experimental. Con una mir
 [Angular](http://angularjs.org/)  
 [D3](http://d3js.org/)  
 [Open Layers 3](http://ol3js.org/)  
-[Polymaps](http://polymaps.org/)
+[Polymaps](http://polymaps.org/)  
 [Node](http://nodejs.org/)    
 [HTML5](http://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)  
 [CSS3](http://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)  
