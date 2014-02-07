@@ -6,9 +6,10 @@ Email: dvalenteneto@santafe.gov.ar
 var po = org.polymaps;
 var drag = po.drag();
 var zoom = po.wheel();
-
+var container = document.getElementsByTagName("section")[0];
 var map = po.map()
-    .container(document.getElementsByTagName("section")[0].appendChild(po.svg("svg")))
+    .container(container.appendChild(po.svg("svg")))
+    .add(po.geoJson().url('data/provincia.geojson'))
     .add(po.geoJson().url('data/departamentos.geojson'))
     .center({lat: -31, lon: -61})
     .zoomRange([3, 20])
@@ -17,6 +18,8 @@ var map = po.map()
 drag.map(map);
 zoom.map(map);
 
+var departamentos = container.getElementsByClassName('layer')[1];
+departamentos.setAttribute('class', 'layer departamentos');
 var test;
 
 /*d3.json('data/santafe-departamentos.topojson', function (error, data) {

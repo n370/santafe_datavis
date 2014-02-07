@@ -99,8 +99,11 @@ section {
 .departamento, .layer {
   fill: rgba(247,241,225,1);
 }
-
-.layer path:hover, .departamento path:hover {
-  opacity: 0.9;
+.departamentos {
+  stroke: black;
+  stroke-width: 0.1;
+}
+.departamentos path:hover {
+  fill: rgba(247,220,200,1);
   cursor: pointer;
 }

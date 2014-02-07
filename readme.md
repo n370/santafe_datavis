@@ -38,4 +38,5 @@ Cargá un servidor HTTP para los archivos estáticos.
 Visitá [http://127.0.0.1:1337/public/index.html](http://127.0.0.1:1337/public/index.html) en tu navegador.
 
 #### Screenshots
-![2014-02-07](screenshots/20140207_001.png)
+![20140207_001](screenshots/20140207_001.png)
+![20140207_002](screenshots/20140207_002.png)
