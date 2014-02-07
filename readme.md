@@ -10,6 +10,8 @@ El presente proyecto es una iniciativa del departamento de informática con obje
 Actualmente trabajamos las visualizaciones en caracter experimental. Con una mirada hacia el futuro, utilizamos software en version beta y especificaciones con implelmentación en andamento.
 
 #### Recursos
+[Python](http://www.python.org/)  
+[Git](http://git-scm.com/)  
 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  
 [Google Fonts](http://www.google.com/fonts)  
 [Icon Fonts](http://weloveiconfonts.com/)  
@@ -20,8 +22,20 @@ Actualmente trabajamos las visualizaciones en caracter experimental. Con una mir
 [Node](http://nodejs.org/)  
 [HTML5](http://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)  
 [CSS3](http://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)  
-[JSON](http://json.org/), [GeoJSON](http://geojson.org/) y [TopoJSON](http://github.com/mbostock/topojson)
+[JSON](http://json.org/), [GeoJSON](http://geojson.org/) y [TopoJSON](http://github.com/mbostock/topojson)  
 [CDNJS](http://cdnjs.com/)
+
+#### Contribuya
+Cloná el repositório.
+
+	$ git clone https://github.com/n370/santafe-datavis
+
+Cargá un servidor HTTP para los archivos estáticos.
+
+	$ cd santafe-datavis
+	$ python -m SimpleHTTPServer 1337
+
+Visitá [http://127.0.0.1:1337/public/index.html](http://127.0.0.1:1337/public/index.html) en tu navegador.
 
 #### Screenshots
 ![2014-02-07](screenshots/20140207_001.png)
