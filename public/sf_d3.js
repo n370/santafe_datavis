@@ -12,7 +12,7 @@ var map = po.map()
     .add(po.geoJson().url('data/provincia.geojson'))
     .add(po.geoJson().url('data/departamentos.geojson'))
     .center({lat: -31, lon: -61})
-    .zoomRange([3, 20])
+    .zoomRange([7, 14])
     .zoom(7);
 
 drag.map(map);
