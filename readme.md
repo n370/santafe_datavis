@@ -15,14 +15,16 @@ Actualmente trabajamos las visualizaciones en caracter experimental. Con una mir
 [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  
 [Google Fonts](http://www.google.com/fonts)  
 [Icon Fonts](http://weloveiconfonts.com/)  
-[Angular](http://angularjs.org/)  
+[Backbone](http://backbonejs.org/)  
+[Underscore](http://underscorejs.org/)    
+[jQuery](http://jquery.com/)  
 [D3](http://d3js.org/)  
 [Open Layers 3](http://ol3js.org/)  
 [Polymaps](http://polymaps.org/)  
 [Node](http://nodejs.org/)    
 [HTML5](http://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)  
 [CSS3](http://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)  
-[JSON](http://json.org/), [GeoJSON](http://geojson.org/) y [TopoJSON](http://github.com/mbostock/topojson)  
+[JSON](http://json.org/), [GeoJSON](http://geojson.org/), [JSON-js](https://github.com/douglascrockford/JSON-js) y [TopoJSON](http://github.com/mbostock/topojson)  
 [CDNJS](http://cdnjs.com/)
 
 #### Contribuya
