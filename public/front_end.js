@@ -17,7 +17,7 @@ var collection_geometria = Backbone.Collection.extend({
 })
 
 var geometrias = new collection_geometria();
-geometrias.fetch();
+//geometrias.fetch();
 
 
 /* User Model */
@@ -64,7 +64,7 @@ var test_instance_model_user = new model_user({
 
 var collection_user = Backbone.Collection.extend({
   model: model_user,
-  url: '/usuarios'
+//  url: '/usuarios'
 });
 
 var test_instance_collection_user = new collection_user([test_instance_model_user]);
