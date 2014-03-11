@@ -10,7 +10,7 @@
   "description" : "",
   "repository:" : {
     "type" : "git",
-    "url" : "https://github.com/n370/santafe-datavis.git"
+    "url" : "https://github.com/n370/santafe_datavis.git"
   },
   "scripts" : {
     "start" : "node back_end"
