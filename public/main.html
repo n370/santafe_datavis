@@ -4,21 +4,25 @@ Email: dvalenteneto@santafe.gov.ar
 -->
 
 <!doctype html>
-<html>
+<html lang="">
 <head>
+  <meta charset="utf-8">
   <script type="text/javascript">
     var agreement = confirm('This website is built upon the latest web technologies.\n\nThings will break if you\'re accessing it using an old browser.\n\nPress Cancel to abort or contact the developer at dvalenteneto@santafe.gov.ar\n\n'); 
     if (agreement !== true) {
-    	window.stop();
+      window.stop();
     } 
   </script>
   <title>Instituto Provincial de Estadística y Censos – IPEC</title>
   <link rel='stylesheet' type='text/css'  href='style.css'/>
+  <script type="text/template" id="profile_card">
+    <h1><%= name.first + ' ' + name.last %></h1>
+  </script>
 </head>
 <body>
   <header class='easy_shadow'>
-  	<div class="grid">
-	  <img class='logo' src='' />
+    <div class="grid">
+    <img class='logo' src='' />
       <a href='' class="grid_cell menu_item entypo-map"></a>
       <a href='' class="grid_cell menu_item entypo-chart-bar"></a>
     </div>
@@ -27,9 +31,8 @@ Email: dvalenteneto@santafe.gov.ar
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone.js" charset="utf-8"></script>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/polymaps/2.5.1/polymaps.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="sf_d3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="front_end.js" charset="utf-8"></script>
 </body>
 </html>
