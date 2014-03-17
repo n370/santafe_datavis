@@ -15,11 +15,11 @@ Actualmente trabajamos las visualizaciones en caracter experimental. Con una mir
 #### Contribuya
 Cloná el repositório.
 
-	$ git clone https://github.com/n370/santafe-datavis
+	$ git clone https://github.com/n370/santafe_datavis
 
 Cargá un servidor HTTP para los archivos estáticos.
 
-	$ cd santafe-datavis
+	$ cd santafe_datavis
 	$ npm start
 
 Visitá [http://0.0.0.0:1337/](http://0.0.0.0:1337/) en tu navegador.
