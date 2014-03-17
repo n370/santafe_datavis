@@ -13,7 +13,7 @@
     "url" : "https://github.com/n370/santafe_datavis.git"
   },
   "scripts" : {
-    "start" : "node back_end"
+    "start" : "node back_end.js"
   },
   "dependencies" : {
     "restify" : "*",
