@@ -1,10 +1,19 @@
 /*
-Author: Dylson 'n370' Valente Neto
-Email: dvalenteneto@santafe.gov.ar
+{
+  "authors": {
+     "name": {
+       "first": "Dylson",
+       "last": "Valente Neto",
+       "alias": ["n370", "n370n370"]
+     },  
+     "email": ["dvalenteneto@santafe.gov.ar"]
+  }
+}
 */
 
-var restify = require('restify'),
-    pg = require('pg');
+var pg = require('pg'),
+    fs = require('fs'),
+    express = require('express');
 
 var db_connection_string = 'postgres://developer:developer@localhost:5432/ipec_sf_2014';
 
@@ -27,18 +36,10 @@ function respond(req, res, next){
 	});
 }
 
+var server = express();
 
-var server = restify.createServer({
-	name: 'Santa Fe DataVis'
-});
+server.use('/', express.static(__dirname + '/public'));
 
-//server.get(/\/?.*/, restify.serveStatic({
-//  directory: './public',
-//  default: 'main.html'
-//}));
+server.listen(1337);
 
-server.get('/provincia', respond);
-
-server.listen(1337, function () {
-	console.log('%s listening at %s', server.name, server.url);
-});
+console.log('Server running');
