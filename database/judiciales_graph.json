@@ -1,10 +1,10 @@
 [
   { 
-  	"_id" : 1,
+  	"_id" : ,
   	"propriedades" : {
   		"vinculo" : {
-  			"desde" : null,
-  			"para" : [2]
+  			"desde" : [],
+  			"para" : []
   		}
   	},
   	"atributos" : {
@@ -12,11 +12,11 @@
     }
   },   
   {
-  	"_id" : 2,
+  	"_id" : ,
   	"propriedades" : {
       "vinculo" : {
-      	"desde" : [1],
-        "para" : [3,4,5,6]
+      	"desde" : [],
+        "para" : []
       }
     },
     "atributos" : {
@@ -24,10 +24,10 @@
     }
   },
   {
-    "_id" : 3,
+    "_id" : ,
     "propriedades" : {
     	"vinculo" : {
-    	  "desde" : [2],
+    	  "desde" : [],
         "para" : []
         // distritos de santa fe, 
         // circuitos de los distritos de santa fe, 
@@ -39,10 +39,10 @@
     }
   },
   {
-  	"_id" : 4,
+  	"_id" : ,
   	"propriedades" : {
       "vinculo" : {
-      	"desde" : [2],
+      	"desde" : [],
         "para" : []
         // distritos de rosario, 
         // circuitos de los distritos de rosario, 
@@ -54,10 +54,10 @@
     }
   },
   {
-  	"_id" : 5,
+  	"_id" : ,
   	"propriedades" : {
       "vinculo" : {
-      	"desde" : [2],
+      	"desde" : [],
         "para" : []
         // distritos de venado tuerto, 
         // circuitos de los distritos de venado tuerto, 
@@ -69,10 +69,10 @@
     }
   },
   {
-  	"_id" : 6,
+  	"_id" : ,
   	"propriedades" : {
       "vinculo" : {
-      	"desde" : [2],
+      	"desde" : [],
         "para" : []
         // distritos de reconquista, 
         // circuitos de los distritos de reconquista, 
@@ -84,10 +84,10 @@
     }
   },
   {
-  	"_id" : 7,
+  	"_id" : ,
   	"propriedades" : {
       "vinculo" : {
-      	"desde" : [2],
+      	"desde" : [],
         "para" : []
         // distritos de rafaela, 
         // circuitos de los distritos de rafaela, 
@@ -97,25 +97,77 @@
     "atributos" : {
     	"rotulo" : "rafaela",
     }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "distrito"
+    }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "circuito"
+    }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "comuna"
+    }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "camara"
+    }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "juez"
+    }
+  },
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "para" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "tribunal"
+    }
   }
-]
-    "distritos" : [],
-    "circuitos" : [],
-    "comunas" : [],
-
-    "camaras" : [],
-    "jueces" : [],
-    "tribunales" : []
-  }, 
-  "atributos" : {
-     "geometrias" : [],
-     "estadistica" : [],
-     "propriedades" : [
-        {
-        	"_id" : null,
-        	"codigo" : 01,
-        	"entidade" : null, 
-          "instancia" : ""
-        }
-      ]
-  }
+]  
