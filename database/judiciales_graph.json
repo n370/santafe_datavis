@@ -134,6 +134,24 @@
       "rotulo" : "comuna"
     }
   },
+  
+
+// Poder Judicial
+
+  {
+    "_id" : ,
+    "propriedades" : {
+      "vinculo" : {
+        "desde" : [],
+        "pasra" : []
+      }
+    },
+    "atributos" : {
+      "rotulo" : "poder judicial"
+    }
+  } 
+
+
   {
     "_id" : ,
     "propriedades" : {
