@@ -1,5 +1,16 @@
 {
-  "name": "nodo",
-  "description": "Create simple collection dumps for your Mongo DB database from command line.",
-  "version": "0.0.0"
+  "name": "node-JSONGraph",
+  "description": "Generate graph-oriented JSON schema and documents.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Dylson Valente Neto",
+    "email": "dylson@tevincocin.com",
+    "alias": ["n370", "n370n370"]
+  },
+  "contributors": [
+    {
+      "name": "Dylson Valente Neto",
+      "email": "dylson@tevincocin.com"
+    }
+  ]
 }
