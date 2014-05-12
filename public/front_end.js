@@ -129,8 +129,8 @@ var view_profile_card_list = Backbone.View.extend({
 
 });
 
-var test_instance_view_profile_card_list = new view_profile_card({ model: test_instance_model_user });
-$('body').append(test_instance_view_profile_card_list.render().el);
+// var test_instance_view_profile_card_list = new view_profile_card({ model: test_instance_model_user });
+// $('body').append(test_instance_view_profile_card_list.render().el);
 
 // The following code doesn't use the 'subviews' approach.
 // var test_instance_view_profile_card = new view_profile_card({ model: test_instance_model_user });

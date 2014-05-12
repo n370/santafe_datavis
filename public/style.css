@@ -34,6 +34,7 @@ body {
   margin: 0;
   font-family: sans-serif;
   background: rgba(180,180,180,1);
+  width: 100%;
 }
 
 header {
@@ -42,12 +43,38 @@ header {
   height: 50px;
   width: 100%;
   position: fixed;
+  z-index: 5;
+}
+
+section {
+}
+
+nav {
+  position: fixed;
+  top: 50px;
+  height: 30px;
+  width: 100%;
+  background: rgba(200,200,200,1);
+  z-index: 4;
+}
+
+#map {
+  position: fixed;
+  background: rgba(205,220,250,1);
+  box-shadow: 0.5px 0px 5px -1px;
+  height: 100vh;
+  z-index: 4;
+}
+
+#info {
+  background: rgba(255,255,255,1);
+  height: 100vh;
 }
 
 .logo {
   position: relative;
-  height: 40px;
-  margin-top: 5px;
+  height: 30px;
+  margin-top: 10px;
 }
 
 .menu_item {
@@ -62,10 +89,7 @@ header {
 
 /* D3js */
 
-.centered {
-  width: 960px;
-  margin: 0 auto 0 auto;
-}
+
 .title {
   font-size: 0.95em;
   font-weight: bold;

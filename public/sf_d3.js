@@ -42,16 +42,28 @@
 // departamentos.setAttribute('class', 'layer departamentos');
 // var test;
 
+function getCssPropertyNumber(selector, property) {
+  var result = new String();
+  var val = $(selector).css(property);
+  for (var i = 0; i < val.length; i++ ) {
+    var digit = parseInt(val[i]);
+    if (digit <= 9) {
+      result = result + digit;
+    } 
+  }
+  return parseInt(result);
+}
+
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
   test = data;
   console.log(test);
   var width = 100,
-      height = 960;
+      height = 100;
   
-  var svg = d3.select('section')
+  var svg = d3.select('#map')
       .append('svg')
       .attr('width', width + '%')
-      .attr('height', height);
+      .attr('height', height + '%');
 
   var projection = d3.geo.mercator()
       .center([-59, -29.5])
@@ -93,6 +105,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       return d3.ascending(a['Población 2010'], b['Población 2010']);
     });
 
+    var w = getCssPropertyNumber('#info', 'width');
     var virgula; 
     var margin = {
       top: 70, 
@@ -101,7 +114,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       left: 120
     };
     var barWeight = 15;
-    var width = 960 - margin.left - margin.right;
+    var width = w - (2 * margin.left) - (2 * margin.right);
     var height = (barWeight + 5) * data.length;
     var max_p2010 = d3.max(data, function(datum) {
       return datum['Población 2010'];
@@ -119,7 +132,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .tickSize(-height)
       .tickFormat(function(datum) { return (datum / 1e6) + "M"; });
     
-    var graph_01 = d3.select('section')
+    var graph_01 = d3.select('#info')
       .append('div')
       .attr('id', 'graph_01')
       .attr('class', 'centered')
@@ -130,7 +143,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-    var title = d3.select('graph_01_svg')
+    var title = d3.select('#graph_01_svg')
       .append('text')
       .attr('class', 'title')
       .attr('y', 20);
@@ -192,7 +205,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .append('tspan')
       .attr('x', 20)
       .attr('dy', 35)
-      .text('Nota: la población total incluye a las personas viviendo en situación de calle.');
+      .text('Nota: La población total incluye a las personas viviendo en situación de calle.');
     notes
       .append('tspan')
       .attr('x', 20)
