@@ -1,28 +1,48 @@
 /*
-Author: Dylson 'n370' Valente Neto
-Email: dvalenteneto@santafe.gov.ar
+{
+  "authors": [
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ],
+  "contributors": [    
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ] 
+}
 */
 
-var po = org.polymaps;
-var drag = po.drag();
-var zoom = po.wheel();
-var container = document.getElementsByTagName("section")[0];
-var map = po.map()
-    .container(container.appendChild(po.svg("svg")))
-    .add(po.geoJson().url('data/provincia.geojson'))
-    .add(po.geoJson().url('data/departamentos.geojson'))
-    .center({lat: -31, lon: -61})
-    .zoomRange([7, 14])
-    .zoom(7);
+// var po = org.polymaps;
+// var drag = po.drag();
+// var zoom = po.wheel();
+// var container = document.getElementsByTagName("section")[0];
+// var map = po.map()
+//     .container(container.appendChild(po.svg("svg")))
+//     .add(po.geoJson().url('data/provincia.geojson'))
+//     .add(po.geoJson().url('data/departamentos.geojson'))
+//     .center({lat: -31, lon: -61})
+//     .zoomRange([7, 14])
+//     .zoom(7);
 
-drag.map(map);
-zoom.map(map);
+// drag.map(map);
+// zoom.map(map);
 
-var departamentos = container.getElementsByClassName('layer')[1];
-departamentos.setAttribute('class', 'layer departamentos');
-var test;
+// var departamentos = container.getElementsByClassName('layer')[1];
+// departamentos.setAttribute('class', 'layer departamentos');
+// var test;
 
-/*d3.json('data/santafe-departamentos.topojson', function (error, data) {
+d3.json('data/santafe-departamentos.topojson', function (error, data) {
   test = data;
   console.log(test);
   var width = 100,
@@ -42,7 +62,7 @@ var test;
 
   var departamentos = topojson.feature(data, data.objects['santafe-departamentos']);
 
-  var mapa = svg.selectAll(".departamento")
+  var mapa = svg.selectAll("svg")
     .data(departamentos.features)
     .enter()
     .append('g')
@@ -57,9 +77,9 @@ var test;
     })
     .attr("d", path);
 
-});*/
+});
 
-/*d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
+d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
   if (!err) {
 
     // Convert strings to numbers.
@@ -183,4 +203,4 @@ var test;
     
 }
   }
-});*/
+});

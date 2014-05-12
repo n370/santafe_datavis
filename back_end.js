@@ -1,13 +1,25 @@
 /*
 {
-  "authors": {
-     "name": {
-       "first": "Dylson",
-       "last": "Valente Neto",
-       "alias": ["n370", "n370n370"]
-     },  
-     "email": ["dvalenteneto@santafe.gov.ar"]
-  }
+  "authors": [
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ],
+  "contributors": [    
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ] 
 }
 */
 

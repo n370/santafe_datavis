@@ -1,6 +1,26 @@
 /*
-Author: Dylson 'n370' Valente Neto
-Email: dvalenteneto@santafe.gov.ar
+{
+  "authors": [
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ],
+  "contributors": [    
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ] 
+}
 */
 
 //  Add this string to your html file to load the library: <script src="http://ol3js.org/en/master/build/ol.js" type="text/javascript"></script>
