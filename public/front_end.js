@@ -23,11 +23,13 @@
 }
 */
 
-$('#show-options').click(function() {
+$('#main-menu-options').click(function() {
   if ( $('nav').is(':hidden') ) {
     $('nav').slideDown();
+    $(this).addClass('menu_item_selected');
   } else {
     $('nav').slideUp();
+    $(this).removeClass('menu_item_selected');
   }
 });
 

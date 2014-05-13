@@ -23,13 +23,6 @@
 }
 */
 
-@import url(http://weloveiconfonts.com/api/?family=entypo);
-
-/* entypo */
-[class*="entypo-"]:before {
-  font-family: 'entypo', sans-serif;
-}
-
 body {
   margin: 0;
   font-family: sans-serif;
@@ -39,14 +32,10 @@ body {
 
 header {
   background: rgba(65,65,65,1);
-  box-shadow: 0px 0.5px 5px -1px;
   height: 50px;
   width: 100%;
   position: fixed;
   z-index: 5;
-}
-
-section {
 }
 
 nav {
@@ -55,18 +44,11 @@ nav {
   height: 100px;
   width: 100%;
   background: rgba(200,200,200,1);
-  z-index: 3;
+  z-index: 4;
 }
 
-#show-options {
-  color: rgba(200, 200, 200, 1);
-  margin-top: 12px;
-  cursor: pointer;
-  text-shadow: -1px -1px 1px #222;
-}
-
-#show-options:hover {
-  text-shadow: -1.5px -1.5px 1px #222;
+.easy_shadow {
+    box-shadow: 0px 0.5px 5px -1px;
 }
 
 #map {
@@ -74,31 +56,69 @@ nav {
   background: rgba(205,220,250,1);
   box-shadow: 0.5px 0px 5px -1px;
   height: 100vh;
-  z-index: 4;
+  z-index: 3;
 }
 
 #info {
+  position: fixed;
   background: rgba(255,255,255,1);
-  height: 100vh;
+  height: 100%;
   padding-top: 50px;
+  bottom: 0;
 }
 
 .logo {
-  height: 30px;
-  margin-top: 10px;
+  height: 2em;
+  vertical-align: middle;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.icon_padding_1x {
+  padding: 4px 9px 5px 10px; 
+}
+
+.icon_padding_2x {
+  padding: 3px 6px;
 }
 
 .menu_item {
-  color: rgba(247,241,225,1);
-  font-size: 1.5em;
+  vertical-align: middle;
+  color: rgba(200, 200, 200, 1);
   text-decoration: none;
+  border: 2px groove rgba(100,100,100,0.5);
+  border-radius: 3px;
+  text-shadow: -1px -1px 1px #222;
+  cursor: pointer;
 }
 
 .menu_item:hover {
   text-decoration: none;
+  background-color: rgba(60,60,60,1);
+  text-shadow: -1.5px -1.5px 1px #222;
 }
 
-/* D3js */
+.menu_item_selected {
+  border: 1px inset rgba(60,60,60,0.5);
+  background-color: rgba(60,60,60,1);
+}
+
+.my-input {
+  border: none;
+}
+
+.my-input:focus {
+  border: none;
+}
+
+
+/************* D3js
+
+IGNORAR ESTA PARTE ES VASURA
+
+*************************/ 
 
 
 .title {
@@ -139,4 +159,9 @@ nav {
 .departamentos path:hover {
   fill: rgba(247,220,200,1);
   cursor: pointer;
+}
+
+#graph_01 {
+  background-color: rgba(245,245,245,1);
+  border: 1px groove rgba(240,240,240,0.5);
 }
