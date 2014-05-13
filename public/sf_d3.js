@@ -105,7 +105,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       return d3.ascending(a['Población 2010'], b['Población 2010']);
     });
 
-    var w = getCssPropertyNumber('#info', 'width');
+    var w = getCssPropertyNumber('article', 'width');
     var virgula; 
     var margin = {
       top: 70, 
@@ -132,7 +132,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .tickSize(-height)
       .tickFormat(function(datum) { return (datum / 1e6) + "M"; });
     
-    var graph_01 = d3.select('#info')
+    var graph_01 = d3.select('article')
       .append('div')
       .attr('id', 'graph_01')
       .attr('class', 'centered')

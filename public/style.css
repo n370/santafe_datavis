@@ -50,12 +50,23 @@ section {
 }
 
 nav {
+  display: none;
   position: fixed;
-  top: 50px;
-  height: 30px;
+  height: 100px;
   width: 100%;
   background: rgba(200,200,200,1);
-  z-index: 4;
+  z-index: 3;
+}
+
+#show-options {
+  color: rgba(200, 200, 200, 1);
+  margin-top: 12px;
+  cursor: pointer;
+  text-shadow: -1px -1px 1px #222;
+}
+
+#show-options:hover {
+  text-shadow: -1.5px -1.5px 1px #222;
 }
 
 #map {
@@ -69,10 +80,10 @@ nav {
 #info {
   background: rgba(255,255,255,1);
   height: 100vh;
+  padding-top: 50px;
 }
 
 .logo {
-  position: relative;
   height: 30px;
   margin-top: 10px;
 }

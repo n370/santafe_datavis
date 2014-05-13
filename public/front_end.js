@@ -23,6 +23,16 @@
 }
 */
 
+$('#show-options').click(function() {
+  if ( $('nav').is(':hidden') ) {
+    $('nav').slideDown();
+  } else {
+    $('nav').slideUp();
+  }
+});
+
+
+
 /* Geometria Model */
 
 var model_geometria = Backbone.Model.extend({

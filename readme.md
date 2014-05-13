@@ -29,3 +29,4 @@ Visitá [http://localhost:1337/main.html](http://localhost:1337/main.html) en tu
 ![20140207_002](screenshots/20140207_002.png)
 ![20140507_001](screenshots/20140507_001.png)
 ![20140512_001](screenshots/20140512_001.png)
+![20140512_002](screenshots/20140512_002.png)
