@@ -24,7 +24,7 @@
 -->
 
 <!doctype html>
-<html lang="">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
@@ -37,8 +37,12 @@
   <title>IPEC - Instituto Provincial de Estadística y Censos</title>
   <link rel="icon" type="image/ico" href="images/favicon.ico"/>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-  <link rel='stylesheet' type='text/css'  href='style.css'/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-dark.min.css">
+  <style>
+    .fa {
+      height: 100%;
+    }
+  </style>
 
   <!-- Underscore templates -->
 
@@ -49,28 +53,14 @@
   <!-- ******************** -->
 
 </head>
-<body class='container-fluid'>
-  <header class='row easy_shadow'>
-    <div class='col-sm-1 text-left full-height'>
-      <i id='main-menu-options' class='fa fa-bars fa-2x icon_padding_2x menu_item'></i>
+<body>
+  <div class="topcoat-navigation-bar">
+      <div class="topcoat-navigation-bar__item left full">
+      <button class="topcoat-icon-button">
+        <span class="topcoat-icon fa fa-bars fa-2x"></span>
+      </button>  
     </div>
-
-    <div class="col-sm-2 col-sm-offset-4 text-center full-height">
-      <img src='images/logo.svg' class="logo"></a>
-    </div>
-
-    <div id='main-menu-search' class='col-sm-3 col-sm-offset-2 menu_item'>
-      <div class='row full-height'>
-        <input id='search-input' type='text' class='my-input text-left col-sm-8'>
-        <div class='col-sm-4 text-center '>
-          <i class='fa fa-search fa-2x'></i>
-        </div>
-      </input>  
-    </div>
-  </header>
-  <nav class='row easy_shadow'>
-
-  </nav>
+  </div>
   <section class='row'>
     <div id='map' class='col-sm-4'>
     </div>
@@ -82,8 +72,8 @@
       </div>  
     </div>
   </section>
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js" charset="utf-8"></script>
