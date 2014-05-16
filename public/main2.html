@@ -37,7 +37,7 @@
   <title>IPEC - Instituto Provincial de Estadística y Censos</title>
   <link rel="icon" type="image/ico" href="images/favicon.ico"/>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/topcoat/0.8.0/css/topcoat-mobile-dark.min.css">
+  <link rel="stylesheet" type="text/css" href="flex.css">
   <style>
     .fa {
       height: 100%;
@@ -54,20 +54,18 @@
 
 </head>
 <body>
-  <div class="topcoat-navigation-bar">
-      <div class="topcoat-navigation-bar__item left full">
-      <button class="topcoat-icon-button">
-        <span class="topcoat-icon fa fa-bars fa-2x"></span>
-      </button>  
-    </div>
+  <div class="flex-container">
+    <nav class="flex-container top-navbar">
+      <object type="image/svg+xml" data="images/logo.svg" id="logo"></object>
+      <object type="image/svg+xml" data="images/menu.svg" id="menu"></object>
+    </nav>
   </div>
-  <section class='row'>
-    <div id='map' class='col-sm-4'>
+  <section class='flex-container'>
+    <div id='map' >
     </div>
-    <div id='info' class='col-sm-8 col-sm-offset-4'>
-
+    <div id='info'>
       <div class='row'>
-        <article class='col-sm-12'>
+        <article>
         </article>
       </div>  
     </div>
@@ -77,8 +75,6 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js" charset="utf-8"></script>
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="front_end.js" charset="utf-8"></script>
-  <script type="text/javascript" src="sf_d3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="" charset="utf-8"></script>
 </body>
 </html>
