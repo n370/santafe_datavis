@@ -29,7 +29,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
   <script type="text/javascript">
-    var agreement = confirm('Esta aplicación se encuentra en fase de desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\n Entre en contacto con el diseñador através del correo dvalenteneto@santafe.gov.ar\n\n'); 
+    var agreement = confirm('Esta aplicación se encuentra en fase de desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\nEntre en contacto con el diseñador através del correo dvalenteneto@santafe.gov.ar\n\n'); 
     if (agreement !== true) {
       window.stop();
     } 
@@ -48,24 +48,36 @@
   <!--  -->
 
 </head>
-<body class='flex-container column'>
-  <nav id='navbar-top' class="flex-container row fixed">
-    <div class='vertically-centered'>
-      <span class='fa fa-bars'></span>
+<body>
+
+  <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow">
+    <div class='flex-container column centered width-1'>
+      <span id='button-bars' class='fa fa-bars button'></span>
     </div>
-    <div class='container-flex-col vertically-centered'>
-      <img src='images/logo.svg' class='logo'>
+    <div class='flex-container row centered width-4 stretchs'>
+      <span class='fa fa-search button'></span>
+      <input type='text' placeholder='Hace una búsqueda!' class='width-7'/>
+    </div>
+    <div class='flex-container row centered width-7 justify-end'>
+      <img id='logo' src='images/logo.svg'>
     </div>
   </nav>
-  <section id='main-section' class='flex-container row'>
-    <div id='map-panel' class='row-item-width-4'></div>
-    <div id='info-panel' class='row-item-width-8'></div>
+  <nav id='sub-navbar-top' class="flex-container row fixed width-12 easy-shadow">
+
+  </nav>
+  <section id='main-section' class='flex-container row fixed width-12'>
+    <div id='map-panel' class='width-4'></div>
+    <div id='info-panel' class='width-8'></div>
   </section>
+
+  <!-- Script imports -->
+
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="sf_d3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="maps.js" charset="utf-8"></script>
+  <script type="text/javascript" src="front_end.js" charset="utf-8"></script>
 </body>
 </html>

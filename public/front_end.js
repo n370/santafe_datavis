@@ -23,12 +23,12 @@
 }
 */
 
-$('#main-menu-options').click(function() {
-  if ( $('nav').is(':hidden') ) {
-    $('nav').slideDown();
+$('#button-bars').click(function() {
+  if ( $('#sub-navbar-top').is(':hidden') ) {
+    $('#sub-navbar-top').slideDown();
     $(this).addClass('menu_item_selected');
   } else {
-    $('nav').slideUp();
+    $('#sub-navbar-top').slideUp();
     $(this).removeClass('menu_item_selected');
   }
 });
@@ -147,3 +147,14 @@ var view_profile_card_list = Backbone.View.extend({
 // The following code doesn't use the 'subviews' approach.
 // var test_instance_view_profile_card = new view_profile_card({ model: test_instance_model_user });
 // $('body').append(test_instance_view_profile_card.render().el);
+
+
+
+
+
+
+
+
+
+
+// 
