@@ -23,25 +23,6 @@
 }
 */
 
-// var po = org.polymaps;
-// var drag = po.drag();
-// var zoom = po.wheel();
-// var container = document.getElementsByTagName("section")[0];
-// var map = po.map()
-//     .container(container.appendChild(po.svg("svg")))
-//     .add(po.geoJson().url('data/provincia.geojson'))
-//     .add(po.geoJson().url('data/departamentos.geojson'))
-//     .center({lat: -31, lon: -61})
-//     .zoomRange([7, 14])
-//     .zoom(7);
-
-// drag.map(map);
-// zoom.map(map);
-
-// var departamentos = container.getElementsByClassName('layer')[1];
-// departamentos.setAttribute('class', 'layer departamentos');
-// var test;
-
 function getCssPropertyNumber(selector, property) {
   var result = new String();
   var val = $(selector).css(property);
@@ -55,31 +36,42 @@ function getCssPropertyNumber(selector, property) {
 }
 
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
-  test = data;
-  console.log(test);
-  var width = 100,
-      height = 100;
-  
-  var svg = d3.select('#map')
-      .append('svg')
-      .attr('width', width + '%')
-      .attr('height', height + '%');
+function dragstarted(d) {
+  d3.event.sourceEvent.stopPropagation();
+  d3.select(this).classed("dragging", true);
+}
+
+function dragged(d) {
+  d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+  d3.select(this).classed("dragging", false);
+}
+
+var drag = d3.behavior.drag()
+    .origin(function(d) { return d; })
+    .on("dragstart", dragstarted)
+    .on("drag", dragged)
+    .on("dragend", dragended);
 
   var projection = d3.geo.mercator()
-      .center([-59, -29.5])
-      .scale(6500);
+      .center([-57,-30.5])
+      .scale(4500);
 
   var path = d3.geo.path()
       .projection(projection);
 
   var departamentos = topojson.feature(data, data.objects['santafe-departamentos']);
+  
+  d3.select('#map-panel').append('svg').attr('id', 'map');
 
-  var mapa = svg.selectAll("svg")
+  d3.select('#map').selectAll('path')
     .data(departamentos.features)
     .enter()
     .append('g')
-    .attr('class', 'departamento');
-  mapa
+    .attr('class', 'departamento')
+    .style("pointer-events", "all")
     .append("path")
     .attr("id", function(datum) { 
       var id = datum.id.toLowerCase();
@@ -105,7 +97,6 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       return d3.ascending(a['Población 2010'], b['Población 2010']);
     });
 
-    var w = getCssPropertyNumber('article', 'width');
     var virgula; 
     var margin = {
       top: 70, 
@@ -113,8 +104,8 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       bottom: 70, 
       left: 120
     };
-    var barWeight = 15;
-    var width = w - (2 * margin.left) - (2 * margin.right);
+    var barWeight = 5;
+    var width = 400 - (margin.left + margin.right);
     var height = (barWeight + 5) * data.length;
     var max_p2010 = d3.max(data, function(datum) {
       return datum['Población 2010'];
@@ -132,7 +123,7 @@ d3.csv('data/cp1-p_santa_fe.csv', function(err, data) {
       .tickSize(-height)
       .tickFormat(function(datum) { return (datum / 1e6) + "M"; });
     
-    var graph_01 = d3.select('article')
+    var graph_01 = d3.select('#info-panel')
       .append('div')
       .attr('id', 'graph_01')
       .attr('class', 'centered')

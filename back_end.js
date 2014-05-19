@@ -54,4 +54,4 @@ server.use('/', express.static(__dirname + '/public'));
 
 server.listen(1337);
 
-console.log('Server running');
+console.log('Server running on port 1337');

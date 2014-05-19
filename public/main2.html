@@ -36,13 +36,8 @@
   </script>
   <title>IPEC - Instituto Provincial de Estadística y Censos</title>
   <link rel="icon" type="image/ico" href="images/favicon.ico"/>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="flex.css">
-  <style>
-    .fa {
-      height: 100%;
-    }
-  </style>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="flex.css" rel="stylesheet" type="text/css">
 
   <!-- Underscore templates -->
 
@@ -50,31 +45,27 @@
     <h1><%= name.first + ' ' + name.last %></h1>
   </script>
 
-  <!-- ******************** -->
+  <!--  -->
 
 </head>
-<body>
-  <div class="flex-container">
-    <nav class="flex-container top-navbar">
-      <object type="image/svg+xml" data="images/logo.svg" id="logo"></object>
-      <object type="image/svg+xml" data="images/menu.svg" id="menu"></object>
-    </nav>
-  </div>
-  <section class='flex-container'>
-    <div id='map' >
+<body class='flex-container column'>
+  <nav id='navbar-top' class="flex-container row fixed">
+    <div class='vertically-centered'>
+      <span class='fa fa-bars'></span>
     </div>
-    <div id='info'>
-      <div class='row'>
-        <article>
-        </article>
-      </div>  
+    <div class='container-flex-col vertically-centered'>
+      <img src='images/logo.svg' class='logo'>
     </div>
+  </nav>
+  <section id='main-section' class='flex-container row'>
+    <div id='map-panel' class='row-item-width-4'></div>
+    <div id='info-panel' class='row-item-width-8'></div>
   </section>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="" charset="utf-8"></script>
+  <script type="text/javascript" src="sf_d3.js" charset="utf-8"></script>
 </body>
 </html>
