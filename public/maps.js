@@ -37,29 +37,43 @@ function getCssPropertyNumber(selector, property) {
 
 d3.json('data/santafe-departamentos.topojson', function (error, data) {
 
-function getAndParse(provincia) { 
-      var id = provincia.id.toLowerCase();
-      id = id.split(' ');
-      id = id.join('_');
-      return id; 
-    }
+  function getAndParse(provincia) { 
+    var id = provincia.id.toLowerCase();
+    id = id.split(' ');
+    id = id.join('_');
+    return id; 
+  }
 
- var w = $('#map-container').css('width');
- var h = $('#map-container').css('height');
+  function zooming() {
+    var translate = d3.event.translate;
+    var scale = d3.event.scale;
+    var str = "translate(" + translate + ")scale(" + scale + ")";
+    d3.select(this)
+      .attr("class", "zooming") 
+      .attr("transform", str);
+  }
 
-var zoom = d3.behavior.zoom()
+  function zoomed() {
+    d3.select(this)
+      .attr('class', '');
+  }
+
+   var w = $('#map-container').css('width');
+   var h = $('#map-container').css('height');
+
+  var zoom = d3.behavior.zoom()
     .size([w,h])
-    .scaleExtent([1,20])
-    .on('zoom', function () {
-      d3.select(this)
-      .attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")"); });
+    .scaleExtent([1,20]);
+
+  zoom.on('zoom', zooming);
+  zoom.on('zoomend', zoomed);
 
   var projection = d3.geo.mercator()
-      .center([-57,-30.5])
-      .scale(4500);
+    .center([-57,-30.5])
+    .scale(4500);
 
   var path = d3.geo.path()
-      .projection(projection);
+  .projection(projection);
 
   var departamentos = topojson.feature(data, data.objects['santafe-departamentos']);
   
