@@ -1,13 +1,15 @@
 {
   "name": "santafe_datavis",
-  "description": "",
   "version": "0.0.0",
   "preferGlobal": false,
   "private": true,
   "author": {
     "name": "Dylson Valente Neto",
     "email": "dvalenteneto@santafe.gov.ar",
-    "alias": ["n370", "n370n370"]
+    "alias": [
+      "n370",
+      "n370n370"
+    ]
   },
   "contributors": [
     {
@@ -20,11 +22,11 @@
     "url": "https://github.com/n370/santafe_datavis.git"
   },
   "scripts": {
-    "start": "node back_end.js"
+    "start": "node server.js"
   },
   "dependencies": {
-    "pg": "*",
-    "express": "^4.1.1"
+    "bower": "^1.3.3",
+    "express": "^4.1.1",
   },
   "licence": "",
   "engines": {
