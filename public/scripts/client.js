@@ -35,23 +35,28 @@ requirejs.config({
     }
 });
 
-// Función principal de la aplicación.
-function client(backbone,d3,$,topojson,underscore,mapView) {
-    var maps = new mapView.mapView();
+var dependencies = ['backbone','d3','jquery','topojson','underscore','mapView'];
 
-    // Oculta y muestra la barra de navgación,
-    // en algún mumento saldrá de acá.
+// Función principal de la aplicación.
+function client(Backbone,d3,$,topojson,_,mapView) {
+  // Oculta y muestra la barra de navegación,
+  // en algún mumento saldrá de acá.
 	$('#button-bars').click(function() {
 	  var state = $('#sub-navbar-top').is(':hidden'); 	
-      if (state) {
-        $('#sub-navbar-top').slideDown();
-        $(this).addClass('button-selected');
-      } else {
-        $('#sub-navbar-top').slideUp();
-        $(this).removeClass('button-selected');
-      }
-    });    
+    if (state) {
+      $('#sub-navbar-top').slideDown();
+      $(this).addClass('button-selected');
+    } else {
+      $('#sub-navbar-top').slideUp();
+      $(this).removeClass('button-selected');
+    }
+  });
+
+  var maps = new mapView.mapView();
+  maps.initialize();
+
+  return {};    
 } // Clients closing bracket.
 
 // Inicializa la aplicación.
-requirejs(['backbone','d3','jquery','topojson','underscore','mapView'], client);
+requirejs(dependencies, client);

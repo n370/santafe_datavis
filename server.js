@@ -23,8 +23,7 @@
 }
 */
 
-var pg = require('pg'),
-    fs = require('fs'),
+var fs = require('fs'),
     express = require('express'),
     server = express();
 

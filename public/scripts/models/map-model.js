@@ -23,23 +23,29 @@
 }
 */
 
-define({
-  mapModel: Backbone.Model.extend({
-    initialize: function(){
-      this.on('invalid', function(model, error){
-        console.log(error);
-      }),
-      this.on('change', function() {
-        console.log('Values for this model has changed.');
-      }),
-      this.on('change:alias', function() {
-        console.log('Alias value for this model has changed.');
-      })
-    },
+var dependencies = ['backbone'];
 
-    // Define default attributes.
-    defaults: {}, 
-    
-    validate: function(attributes) {}
-  })
-});
+function mapModel(Backbone) {
+  return {
+    mapModel: Backbone.Model.extend({
+      initialize: function(){
+        this.on('invalid', function(model, error){
+          console.log(error);
+        }),
+        this.on('change', function() {
+          console.log('Values for this model has changed.');
+        }),
+        this.on('change:alias', function() {
+          console.log('Alias value for this model has changed.');
+        })
+      },
+
+      // Define default attributes.
+      defaults: {}, 
+      
+      validate: function(attributes) {}
+    })
+  }  
+}
+
+define(dependencies, mapModel);
