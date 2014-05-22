@@ -24,7 +24,7 @@
 */
 
 define({
-  model-map: Backbone.Model.extend({
+  mapModel: Backbone.Model.extend({
     initialize: function(){
       this.on('invalid', function(model, error){
         console.log(error);
@@ -36,10 +36,10 @@ define({
         console.log('Alias value for this model has changed.');
       })
     },
-    
-    // Temporary!! Ideally we need a stronger UUID, GUID or something similar.
+
+    // Define default attributes.
     defaults: {}, 
     
     validate: function(attributes) {}
-  });
+  })
 });

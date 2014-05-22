@@ -50,20 +50,26 @@
 </head>
 <body>
   <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow">
-    <div class='flex-container column centered width-1'>
-      <span id='button-bars' class='fa fa-bars button'></span>
+
+    <div class='flex-container row centered width-4 limit'>
+      <div class='flex-container row centered width-4'>
+        <span id='button-bars' class='fa fa-bars button'></span>
+      </div>
+
+      <div class='flex-container row centered width-8 stretchs'>
+        <input type='text' placeholder='Hace una búsqueda!' class='width-8'/>
+        <span class='fa fa-search button'></span>
+      </div>
     </div>
-    <div class='flex-container row centered width-4 stretchs'>
-      <input type='text' placeholder='Hace una búsqueda!' class='width-7'/>
-      <span class='fa fa-search button'></span>
+
+    <div class='flex-container row centered width-8 justify-end'>
+      <img id='logo' src='images/logo.svg'/>
     </div>
-    <div class='flex-container row centered width-7 justify-end'>
-      <img id='logo' src='images/logo.svg'>
-    </div>
+
   </nav>
-  <nav id='sub-navbar-top' class="flex-container row fixed width-12 easy-shadow"></nav>
+  <nav id='sub-navbar-top' class="flex-container row fixed width-12 easy-shadow hidden"></nav>
   <section id='main-section' class='flex-container row fixed width-12'>
-    <div id='map-panel' class='width-4'></div>
+    <div id='map-panel' class='width-4 limit'></div>
     <div id='info-panel' class='width-8'></div>
   </section>
 </body>

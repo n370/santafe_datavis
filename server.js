@@ -25,33 +25,22 @@
 
 var pg = require('pg'),
     fs = require('fs'),
-    express = require('express');
+    express = require('express'),
+    server = express();
 
-var db_connection_string = 'postgres://developer:developer@localhost:5432/ipec_sf_2014';
-
-function respond(req, res, next){
-	pg.connect(db_connection_string, function(err, client, done) {
-	  if(err) {
-	    return console.error('Error fetching client from pool', err);
-	  }
-	  client.query('select * from entidades.departamentos', function(err, result) {
-	    //call `done()` to release the client back to the pool
-	    done();
-
-	    if(err) {
-	      return console.error('Error running query', err);
-	    }
-	    res.send(201, result.rows[0].rotulo);
-	    return next();
-	    //output: 1
-	  });
-	});
-}
-
-var server = express();
+var router = express.Router();
+router.route('/')
+  .get(function(req,res) {
+    var file = __dirname + '/database/judicial/geojson/america-continental.geojson';
+    fs.readFile(file,function(err, data) {
+      if (err) throw err;
+      console.log(data);
+      res.json(JSON.parse(data));
+    })
+  });
 
 server.use('/', express.static(__dirname + '/public'));
+server.use('/maps', router);
 
 server.listen(1337);
-
 console.log('Server running on port 1337');

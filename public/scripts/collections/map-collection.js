@@ -23,12 +23,12 @@
 }
 */
 
-require(["..scripts/models/model-map"], function(model-map) {	
-	define({
-        collection-map: Backbone.Collection.extend({
-	      model: model-map,
-	      url: '/map' // Rota HTTP que mandará uma Array de JSON.
-	    }),
-        maps: new collection-map() // Instancia a colleção.
-    });
+define(["../models/map-model"], function(mapModel) {	
+  var collection = Backbone.Collection.extend({
+    model: mapModel,
+    url: '/maps' // Rota HTTP que mandará uma Array de JSON.
+  });
+  return {
+    mapCollection: new collection()
+  }
 });
