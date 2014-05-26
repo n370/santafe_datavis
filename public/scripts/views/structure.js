@@ -41,9 +41,7 @@ function Module() {
       var Structure = Backbone.View.extend({
         el: 'body',
         template: _.template($('#app-structure').html()),
-        events: {
-          click: ''
-        },
+        events: {},
         initialize: initialize,
         render: render,
       });

@@ -25,7 +25,7 @@
 
 var dependencies = ['backbone'];
 
-function Model(Backbone) {
+function Module(Backbone) {
   return {
     mapModel: Backbone.Model.extend({
       initialize: function(){
@@ -54,4 +54,4 @@ function Model(Backbone) {
   }  
 }
 
-define(dependencies, Model);
+define(dependencies, Module);

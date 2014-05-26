@@ -24,7 +24,8 @@
 */
 var dependencies = ["models/map-model","backbone"];
 
-function Collection(Model, Backbone) { 
+function Module(Model, Backbone) { 
+
   var collection = Backbone.Collection.extend({
     model: Model.mapModel,
     url: '/maps' // Rota HTTP que mandará uma Array de JSON.
@@ -34,4 +35,4 @@ function Collection(Model, Backbone) {
   }
 }
 
-define(dependencies, Collection);
+define(dependencies, Module);

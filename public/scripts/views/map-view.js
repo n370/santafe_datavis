@@ -103,19 +103,14 @@ function Module(Collection,d3,topojson) {
       .append("path")
       .attr("id", getAndParse)
       .attr("d", path);
-  }; // End initialize
+  } // End initialize
   
   function render() {
-    // Pass an object to the template attribute.
-    this.$el.html(this.template(this.model.attributes)); 
-    return this;
-  };
-  
-  function changeColor() {
-    this.$('h1').css('color', 'red');
   }
-
-  function success() {}
+  
+  function success() {
+    console.log('Maps successfully fetched!');
+  }
 
   col.fetch({
     reset: true,
@@ -128,15 +123,9 @@ function Module(Collection,d3,topojson) {
     mapView: function() {
       var mapView = Backbone.View.extend({
         collection: 'col',
-        tagName: 'div',
-        className: '',
-        template: _.template($('#profile_card').html()),
-        events: {
-          click: 'changeColor'
-        },
+        events: {},
         initialize: initialize,
-        render: render,
-        changeColor: changeColor
+        render: render
       });
 
       var maps = new mapView();

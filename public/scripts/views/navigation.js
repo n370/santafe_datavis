@@ -36,8 +36,7 @@ function Module() {
     return this;
   }
 
-  // Oculta y muestra la barra de navegación,
-  // en algún mumento saldrá de acá.
+  // Oculta y muestra la sub barra de navegación.
   function toggleSubMenu() {
     var state = $('#sub-navbar-top').is(':hidden');   
     if (state) {
