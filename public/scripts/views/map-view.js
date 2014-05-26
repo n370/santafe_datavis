@@ -23,15 +23,15 @@
 }
 */
 
-var dependencies = ["../scripts/collections/map-collection","d3","topojson"];
+var dependencies = ["collections/map-collection","d3","topojson"];
 
-function mapView(mapCollection,d3,topojson) {
+function View(Collection,d3,topojson) {
   
-  var col = mapCollection.mapCollection;
+  var col = Collection.mapCollection;
 
   function initialize() {      
 
-    var mapas = this.collection.models[0].features;
+    var geometries = this.collection.models[0].features;
 
     function getCssPropertyNumber(selector, property) {
       var result = new String();
@@ -83,7 +83,7 @@ function mapView(mapCollection,d3,topojson) {
     var path = d3.geo.path()
     .projection(projection);
 
-    var departamentos = topojson.feature(mapas, mapas.objects['santafe-departamentos']);
+    var departamentos = topojson.feature(geometries, geometries.objects['']);
     
     d3.select('#map-panel')
       .append('svg')
@@ -125,19 +125,24 @@ function mapView(mapCollection,d3,topojson) {
   console.log(col); // Debugging
 
   return { 
-    mapView: Backbone.View.extend({
-      collection: 'mapCollection.mapCollection',
-      tagName: 'div',
-      className: '',
-      template: _.template($('#profile_card').html()),
-      events: {
-        click: 'changeColor'
-      },
-      initialize: initialize,
-      render: render,
-      changeColor: changeColor
-    }) 
-  };
+    mapView: function() {
+      var mapView = Backbone.View.extend({
+        collection: 'col',
+        tagName: 'div',
+        className: '',
+        template: _.template($('#profile_card').html()),
+        events: {
+          click: 'changeColor'
+        },
+        initialize: initialize,
+        render: render,
+        changeColor: changeColor
+      });
+
+      var maps = new mapView();
+      maps.initialize(); 
+    }
+  }
 }
 
-define(dependencies, mapView);
+define(dependencies, View);

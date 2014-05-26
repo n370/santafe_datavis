@@ -7,7 +7,7 @@
         "last": "Valente Neto",
         "alias": ["n370", "n370n370"]
       },  
-      "email": ["dvalenteneto@santafe.gov.ar"]
+      "email": ["Dylson Valente Neto <dvalenteneto@santafe.gov.ar>"]
     } 
   ],
   "contributors": [    
@@ -25,52 +25,90 @@
 <!doctype html>
 <html lang="es">
 <head>
+  <title>IPEC - Instituto Provincial de Estadística y Censos</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
+  <meta name="viewport" 
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
+  <link href="images/favicon.ico" rel="icon" type="image/ico"/>
+  <link href="styles/flex.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
+
   <script type="text/javascript">
-    var agreement = 'Esta aplicación se encuentra en fase de desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\nEntre en contacto con el diseñador através del correo dvalenteneto@santafe.gov.ar\n\n'; 
-    if (confirm(agreement) !== true) {
+    var TERMS = 'Esta aplicación se encuentra en fase de desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\nEntre en contacto con el diseñador através del correo dvalenteneto@santafe.gov.ar\n\n';
+    var SIGNATURE = confirm(TERMS);
+    var OK = true; 
+    if (SIGNATURE !== OK) {
       window.stop();
     } 
-  </script>
-  <title>IPEC - Instituto Provincial de Estadística y Censos</title>
-  <link rel="icon" type="image/ico" href="images/favicon.ico"/>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="styles/flex.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="bower_components/requirejs/require.js" charset="utf-8" data-main="scripts/client"></script>
-  <!-- Underscore templates -->
 
-  <!-- Example -->
+    requirejs.config({
+        paths: {
+            collections: 'scripts/collections/',
+            models: 'scripts/models/',
+            views: 'scripts/views/',
+            backbone: 'bower_components/backbone/backbone',
+            d3: 'bower_components/d3/d3.min',
+            jquery: 'bower_components/jquery/dist/jquery.min',
+            topojson: 'bower_components/topojson/topojson',
+            underscore: 'bower_components/underscore/underscore'
+        }
+    });
+
+    var dependencies = ['backbone','d3','jquery','topojson','underscore','views/map-view', 'views/app-view'];
+
+    // Función principal de la aplicación.
+    function client(Backbone,d3,$,topojson,_,View,App) {
+      
+      // Oculta y muestra la barra de navegación,
+      // en algún mumento saldrá de acá.
+      $('#button-bars').click(function() {
+        var state = $('#sub-navbar-top').is(':hidden');   
+        if (state) {
+          $('#sub-navbar-top').slideDown();
+          $(this).addClass('button-selected');
+        } else {
+          $('#sub-navbar-top').slideUp();
+          $(this).removeClass('button-selected');
+        }
+      });
+
+      View.mapView();
+      App.
+    }
+
+    // Inicializa la aplicación.
+    requirejs(dependencies, client);
+  </script>
+
+  <script type="text/template" id="app-structure">
+    <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow">
+      <div class='flex-container row centered width-8 justify-end'>
+        <img id='logo' src='images/logo.svg'/>
+      </div>
+    </nav>
+    <nav id='sub-navbar-top' class="flex-container row fixed width-12 easy-shadow hidden"></nav>
+    <section id='main-section' class='flex-container row fixed width-12'>
+      <div id='map-panel' class='width-4 limit'></div>
+      <div id='info-panel' class='width-8'></div>
+    </section>
+  </script>
+
+  <script type="text/template" id="app-navigation">
+        <div class='flex-container row centered width-4 limit'>
+        <div class='flex-container row centered width-4'>
+          <span id='button-bars' class='fa fa-bars button'></span>
+        </div>
+        <div class='flex-container row centered width-8 stretchs'>
+          <input type='text' placeholder='Hace una búsqueda!' class='width-8'/>
+          <span class='fa fa-search button'></span>
+        </div>
+      </div>
+  </script>
+
   <script type="text/template" id="profile_card">
+    // A Underscore template to be loaded
     <h1><%= name.first + ' ' + name.last %></h1>
   </script>
-  <!-- -->
-
-  <!-- END: Underscore templates -->
 </head>
-<body>
-  <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow">
-
-    <div class='flex-container row centered width-4 limit'>
-      <div class='flex-container row centered width-4'>
-        <span id='button-bars' class='fa fa-bars button'></span>
-      </div>
-
-      <div class='flex-container row centered width-8 stretchs'>
-        <input type='text' placeholder='Hace una búsqueda!' class='width-8'/>
-        <span class='fa fa-search button'></span>
-      </div>
-    </div>
-
-    <div class='flex-container row centered width-8 justify-end'>
-      <img id='logo' src='images/logo.svg'/>
-    </div>
-
-  </nav>
-  <nav id='sub-navbar-top' class="flex-container row fixed width-12 easy-shadow hidden"></nav>
-  <section id='main-section' class='flex-container row fixed width-12'>
-    <div id='map-panel' class='width-4 limit'></div>
-    <div id='info-panel' class='width-8'></div>
-  </section>
-</body>
+<body></body>
 </html>

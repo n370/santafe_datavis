@@ -25,7 +25,7 @@
 
 var dependencies = ['backbone'];
 
-function mapModel(Backbone) {
+function Model(Backbone) {
   return {
     mapModel: Backbone.Model.extend({
       initialize: function(){
@@ -40,12 +40,18 @@ function mapModel(Backbone) {
         })
       },
 
-      // Define default attributes.
-      defaults: {}, 
+      // Define attributos por padrón para
+      // cada nuevo modelo.
+      defaults: { 
+        // Acá entra una lista associativa
+        // con atributos y valores.
+      }, 
       
+      // Valida los modelos y retorna null  
+      // si és valido. Emite 'invalid' si es inválida.
       validate: function(attributes) {}
     })
   }  
 }
 
-define(dependencies, mapModel);
+define(dependencies, Model);
