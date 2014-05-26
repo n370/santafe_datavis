@@ -25,7 +25,8 @@
 
 var dependencies = [];
 
-function View() {
+function Module() {
+
   function initialize() {
 
   }
@@ -37,7 +38,7 @@ function View() {
 
   return { 
     Structure: function() {
-      var mapView = Backbone.View.extend({
+      var Structure = Backbone.View.extend({
         el: 'body',
         template: _.template($('#app-structure').html()),
         events: {
@@ -47,10 +48,10 @@ function View() {
         render: render,
       });
 
-      var app = new Structure();
-      app.render(); 
+      var structure = new Structure();
+      structure.render(); 
     }
   }
 }
 
-define(dependencies, View);
+define(dependencies, Module);

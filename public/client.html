@@ -54,32 +54,17 @@
         }
     });
 
-    var dependencies = ['backbone','d3','jquery','topojson','underscore','views/map-view', 'views/app-view'];
+    var dependencies = ['backbone','d3','jquery','topojson','underscore','views/views'];
 
     // Función principal de la aplicación.
-    function client(Backbone,d3,$,topojson,_,View,App) {
-      
-      // Oculta y muestra la barra de navegación,
-      // en algún mumento saldrá de acá.
-      $('#button-bars').click(function() {
-        var state = $('#sub-navbar-top').is(':hidden');   
-        if (state) {
-          $('#sub-navbar-top').slideDown();
-          $(this).addClass('button-selected');
-        } else {
-          $('#sub-navbar-top').slideUp();
-          $(this).removeClass('button-selected');
-        }
-      });
-
-      View.mapView();
-      App.
+    function client(Backbone,d3,$,topojson,_,View) {
+      View.Views();
     }
 
     // Inicializa la aplicación.
     requirejs(dependencies, client);
   </script>
-
+  
   <script type="text/template" id="app-structure">
     <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow">
       <div class='flex-container row centered width-8 justify-end'>

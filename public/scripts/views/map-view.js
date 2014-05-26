@@ -25,7 +25,7 @@
 
 var dependencies = ["collections/map-collection","d3","topojson"];
 
-function View(Collection,d3,topojson) {
+function Module(Collection,d3,topojson) {
   
   var col = Collection.mapCollection;
 
@@ -145,4 +145,4 @@ function View(Collection,d3,topojson) {
   }
 }
 
-define(dependencies, View);
+define(dependencies, Module);
