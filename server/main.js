@@ -23,13 +23,16 @@
 }
 */
 
-var fs = require('fs'),
-    express = require('express'),
+var express = require('express'),
     server = express();
 
 var mapRoutes = require('./routes/map-router').routes;
 
-server.use('/', express.static('./client'));
+var staticFiles = express.static('./client', {
+  'index': ['main.html', 'main.htm']
+});
+
+server.use('/', staticFiles);
 server.use('/maps', mapRoutes);
 
 server.listen(1337);
