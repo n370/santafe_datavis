@@ -27,9 +27,9 @@ var fs = require('fs'),
     express = require('express'),
     server = express();
 
-var mapRoutes = require('./routes/map-router').routes();
+var mapRoutes = require('./routes/map-router').routes;
 
-server.use('/', express.static(__dirname + '/public'));
+server.use('/', express.static('./client'));
 server.use('/maps', mapRoutes);
 
 server.listen(1337);

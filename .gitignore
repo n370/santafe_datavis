@@ -1,6 +1,5 @@
 *.swp
 *.txt
 .DS_Store
-public/data/temp
 node_modules
 *.log
