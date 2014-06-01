@@ -32,7 +32,7 @@ function Module() {
   }
 
   function render() {
-    this.$el.html(this.template());
+    this.$el.prepend(this.template());
     return this;
   }
 

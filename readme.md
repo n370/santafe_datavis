@@ -30,8 +30,8 @@ Cargá un servidor HTTP para los archivos estáticos.
 Visitá [http://localhost:1337/client.html](http://localhost:1337/client.html) en tu navegador.
 
 #### Screenshots
-![20140207_001](screenshots/20140207_001.png)
-![20140207_002](screenshots/20140207_002.png)
-![20140507_001](screenshots/20140507_001.png)
-![20140512_001](screenshots/20140512_001.png)
-![20140512_002](screenshots/20140512_002.png)
+![20140207_001](docs/screenshots/20140207_001.png)
+![20140207_002](docs/screenshots/20140207_002.png)
+![20140507_001](docs/screenshots/20140507_001.png)
+![20140512_001](docs/screenshots/20140512_001.png)
+![20140512_002](docs/screenshots/20140512_002.png)
