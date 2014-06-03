@@ -27,10 +27,9 @@ var dependencies = ["collections/map-collection","d3","topojson"];
 
 function Module(Collection,d3,topojson) {
   
-  var mapCollection = Collection.mapCollection;
+  var collection = Collection.mapCollection;
 
   function render() {
-    var geometries = this.collection.models[0].attributes.features;
 
     function getCssPropertyNumber(selector, property) {
       var result = new String();
@@ -43,7 +42,7 @@ function Module(Collection,d3,topojson) {
       }
       return parseInt(result);
     }
-  
+    
     function getAndParse(provincia) { 
       var id = provincia.id.toLowerCase();
       id = id.split(' ');
@@ -68,38 +67,41 @@ function Module(Collection,d3,topojson) {
     var w = $('#map-container').css('width');
     var h = $('#map-container').css('height');
 
-    var zoom = d3.behavior.zoom()
-      .size([w,h])
-      .scaleExtent([1,20]);
-
-    zoom.on('zoom', zooming);
-    zoom.on('zoomend', zoomed);
-
-    var projection = d3.geo.mercator()
-      .center([-57,-30.5])
-      .scale(1000);
-
-    var path = d3.geo.path()
-    .projection(projection);
-
-    // var departamentos = topojson.feature(geometries, geometries.objects['']);
+    var mapas = this.collection.models;
+    var x = 0;
     
-    d3.select('#map-panel')
-      .append('svg')
-      .attr('id', 'map')
-      .attr('width', '100%')
-      .attr('height', '100%')
-      .append('g')
-      .attr('id', 'layer')
-      .call(zoom);
+    for(x; x < mapas.length; x++) {
 
-    d3.select('#layer').selectAll('path')
-      .data(geometries)
-      .enter()
-      .append('g')
-      .style("pointer-events", "all")
-      .append("path")
-      .attr("d", path);
+      var geometries = mapas[x].attributes.features;
+      var zoom = d3.behavior.zoom()
+        .size([w,h])
+        .scaleExtent([1,20]);
+
+      zoom.on('zoom', zooming);
+      zoom.on('zoomend', zoomed);
+
+      var projection = d3.geo.mercator()
+        .center([0,0])
+        .scale(200);
+
+      var path = d3.geo.path()
+      .projection(projection);
+
+      // var departamentos = topojson.feature(geometries, geometries.objects['']);
+      
+      var svg = d3.select('#map-panel')
+        .append('svg')
+        .attr('class', 'full-width full-height');
+
+      svg.append('g')
+        .attr('class', 'layer')
+        .selectAll('path')
+        .data(geometries)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .call(zoom);
+    }
   }
   
   function initialize() {
@@ -125,7 +127,7 @@ function Module(Collection,d3,topojson) {
   return { 
     mapView: function() {
       var mapView = Backbone.View.extend({
-        collection: mapCollection,
+        collection: collection,
         events: {},
         initialize: initialize,
         render: render

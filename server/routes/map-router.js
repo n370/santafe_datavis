@@ -26,16 +26,24 @@
 var express = require('express'),
     fs = require('fs'),
     exports = module.exports = {};
-var homePath = process.cwd();
+
+var root = process.cwd();
 var router = express.Router();
-router.route('/')
-.get(function(req,res) {
-  var file = homePath + '/server/database/judicial/geojson/america-continental.geojson';
-  fs.readFile(file,function(err, data) {
-    if (err) throw err;
-    console.log(data);
-    res.json(JSON.parse(data));
-  })
-});
+var dir = root + '/server/database/judicial/geojson/';
+
+function get(req,res) {
+  var maps = new Array();
+  var files = fs.readdirSync(dir);
+  var i = 0;
+  for (i; i < files.length; i++) {
+    var file = fs.readFileSync(dir + files[i]);
+    var map = JSON.parse(file);
+    maps.push(map);
+  }
+  res.json(maps);
+  console.log('Maps requested :' + maps);
+}
+
+router.route('/').get(get);
 
 exports.routes = router;
