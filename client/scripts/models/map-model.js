@@ -44,7 +44,7 @@ function Module(Backbone) {
       // cada nuevo modelo.
       defaults: { 
         // Acá entra una lista associativa
-        // con atributos y valores.
+        // con atributos y valores por defecto.
       }, 
       
       // Valida los modelos y retorna null  

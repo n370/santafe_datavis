@@ -31,6 +31,12 @@ function Module(Collection,d3,topojson) {
 
   function render() {
 
+    function detectGeoJSONType(feature) {
+      if (feature.attribute.features) {
+        return 
+      }
+    }
+
     function getCssPropertyNumber(selector, property) {
       var result = new String();
       var val = $(selector).css(property);
@@ -66,16 +72,17 @@ function Module(Collection,d3,topojson) {
 
     var w = $('#map-container').css('width');
     var h = $('#map-container').css('height');
-
+   
+    var zoom = d3.behavior.zoom()
+      .size([w,h])
+      .scaleExtent([1,20]);
+   
     var mapas = this.collection.models;
     var x = 0;
     
     for(x; x < mapas.length; x++) {
 
       var geometries = mapas[x].attributes.features;
-      var zoom = d3.behavior.zoom()
-        .size([w,h])
-        .scaleExtent([1,20]);
 
       zoom.on('zoom', zooming);
       zoom.on('zoomend', zoomed);
@@ -85,7 +92,7 @@ function Module(Collection,d3,topojson) {
         .scale(200);
 
       var path = d3.geo.path()
-      .projection(projection);
+        .projection(projection);
 
       // var departamentos = topojson.feature(geometries, geometries.objects['']);
       
@@ -94,7 +101,7 @@ function Module(Collection,d3,topojson) {
         .attr('class', 'full-width full-height');
 
       svg.append('g')
-        .attr('class', 'layer')
+        .attr('class', '')
         .selectAll('path')
         .data(geometries)
         .enter()
@@ -118,7 +125,7 @@ function Module(Collection,d3,topojson) {
     var that = this;
 
     this.collection.fetch({ 
-      reset: true, 
+      // reset: true, 
       success: success, 
       error: error
     });
