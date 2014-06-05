@@ -23,15 +23,15 @@
 }
 */
 
-var dependencies = ['views/structure','views/navigation','views/map-view','views/info-view'];
+var dependencies = ['views/structure','views/navigation','views/circunscripciones-view','views/info-view'];
 
-function Module(structure,navigation,maps,info) {
+function Module(structure,navigation,circunscripciones,info) {
 
   return { 
     Views: function() {
       structure.Structure();
       navigation.Navigation();
-      maps.mapView();
+      circunscripciones.circunscripcionesView();
     }
   }
 }

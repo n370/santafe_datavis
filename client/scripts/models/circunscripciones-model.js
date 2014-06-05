@@ -22,22 +22,15 @@
   ] 
 }
 */
+var dependencies = ['backbone'];
 
-var express = require('express'),
-    fs = require('fs'),
-    exports = module.exports = {};
-
-var root = process.cwd();
-var dir = root + '/server/database/judicial/geojson/';
-var router = express.Router();
-
-function get(req,res) {
-  fs.readFile(dir + 'circunscripciones-judiciales.json', function(err, buf) {
-    if (err) throw err;
-    res.json(JSON.parse(buf));
+function Module(Backbone) { 
+  var model = Backbone.Model.extend({
+    url: '/maps/circunscripciones'
   });
+  return {
+    circunscripcionesModel: new model()
+  }
 }
 
-router.route('/circunscripciones').get(get)
-
-exports.routes = router;
+define(dependencies, Module);
