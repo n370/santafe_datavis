@@ -28,36 +28,27 @@ var express = require('express'),
     stream = require('stream'),
     exports = module.exports = {};
 
+var layers = new stream.Readable;
 var root = process.cwd();
 var router = express.Router();
 var dir = root + '/server/database/judicial/geojson/';
-var layers = new stream.Readable;
 var names = fs.readdirSync(dir);
-var start = new Buffer('[');
-var finish = new Buffer(']');
+
+layers._read = function () {
+  var i = 0;
+  for (i; i < names.length; i++) {
+    if (i === 0) { layers.push('[', 'utf8') }
+    fs.readFile(dir + names[i], function(err, buf) {
+      if (err) throw err;
+      layers.push(buf + ',', 'utf8');
+    });
+    if (i < names.length - 1) layers.push(']', 'utf8'); layers.push(null);
+  }
+}
 
 function get(req,res) {
   res.type('application/json');
-  var i = 0;
-  for (i; i < names.length; i++) {
-    fs.readFile(dir + names[i], function(err, buf){
-      if (err) {
-        throw err;
-      } else if (i === 0) {
-        layers.push(start + buf);
-        console.log('First layer pushed to stream');
-      } else if (i === names.length - 1) {
-        layers.push(buf + finish);
-        console.log('Last layer pushed to stream');
-        layers.push(null);
-        console.log('Null pushed to readable stream');
-        layers.pipe(res);
-      } else {
-        layers.push(buf);
-        console.log('In-between layers pushed to stream');
-      }
-    });
-  }
+  layers.pipe(res);
 }
 
 router.route('/').get(get);
