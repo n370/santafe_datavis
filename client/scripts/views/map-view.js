@@ -29,6 +29,21 @@ function Module(Collection,d3,topojson) {
   
   var collection = Collection.mapCollection;
 
+  function randomColor() {
+    var colorScale = d3.scale.linear()
+      .domain([0, 10])
+      .range([0, 255]);
+    var i = 0;
+    var v = new Array();
+    for (i; i < 3; i++) {
+      var n = Math.floor((Math.random() * 10) + 1);
+      v.push(Math.floor(colorScale(n)));
+    }
+    var color_string = 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ',0.2)';
+    console.log(color_string);
+    return color_string;
+  }
+
   function render() {
 
     function detectGeoJSONType(feature) {
@@ -76,29 +91,30 @@ function Module(Collection,d3,topojson) {
     var zoom = d3.behavior.zoom()
       .size([w,h])
       .scaleExtent([1,20]);
-   
+    
+    //zoom.on('zoom', zooming);
+    zoom.on('zoomend', zoomed);
+    
     var mapas = this.collection.models;
     var x = 0;
     
+    var svg = d3.select('#map-panel')
+        .append('svg')
+        .attr('class', 'full-width full-height')
+        .call(zoom);
+
     for(x; x < mapas.length; x++) {
 
       var geometries = mapas[x].attributes.features;
 
-      zoom.on('zoom', zooming);
-      zoom.on('zoomend', zoomed);
-
       var projection = d3.geo.mercator()
-        .center([0,0])
-        .scale(200);
+        .center([-58,-30])
+        .scale(5000);
 
       var path = d3.geo.path()
         .projection(projection);
 
       // var departamentos = topojson.feature(geometries, geometries.objects['']);
-      
-      var svg = d3.select('#map-panel')
-        .append('svg')
-        .attr('class', 'full-width full-height');
 
       svg.append('g')
         .attr('class', '')
@@ -107,7 +123,7 @@ function Module(Collection,d3,topojson) {
         .enter()
         .append("path")
         .attr("d", path)
-        .call(zoom);
+        .style('fill', randomColor);
     }
   }
   
