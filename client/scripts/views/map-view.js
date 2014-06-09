@@ -41,6 +41,7 @@ function Module(Collection,d3,topojson) {
     }
     if (a) {
       var color_string = 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ','+ a + ')';
+      console.log(color_string);
       return color_string;
     } else {
       console.error('ERR : No alpha string value was passed as an argument');
@@ -49,12 +50,6 @@ function Module(Collection,d3,topojson) {
   }
 
   function render() {
-
-    function detectGeoJSONType(feature) {
-      if (feature.attribute.features) {
-        return 
-      }
-    }
 
     function getCssPropertyNumber(selector, property) {
       var result = new String();
@@ -84,10 +79,7 @@ function Module(Collection,d3,topojson) {
         .attr("transform", str);
     }
 
-    function zoomed() {
-      d3.select(this)
-        .attr('class', '');
-    }
+    function zoomed() {}
 
     var w = $('#map-container').css('width');
     var h = $('#map-container').css('height');
@@ -96,16 +88,18 @@ function Module(Collection,d3,topojson) {
       .size([w,h])
       .scaleExtent([1,20]);
     
-    //zoom.on('zoom', zooming);
+    zoom.on('zoom', zooming);
     zoom.on('zoomend', zoomed);
     
     var mapas = this.collection.models;
-    var x = 0;
     
     var svg = d3.select('#map-panel')
         .append('svg')
         .attr('class', 'full-width full-height');
 
+    var layers = svg.append('g').attr('class', 'layers');
+
+    var x = 0;
     for(x; x < mapas.length; x++) {
 
       var geometries = mapas[x].attributes.features;
@@ -119,20 +113,22 @@ function Module(Collection,d3,topojson) {
 
       // var departamentos = topojson.feature(geometries, geometries.objects['']);
 
-      svg.append('g')
+      layers.append('g')
         .attr('class', 'layer')
         .selectAll('path')
         .data(geometries)
         .enter()
         .append("path")
+        .attr("d", path)
         .attr('class', function(d) {
           return d.geometry.type;
         })
-        .attr("d", path)
-        .style('fill', randomRGBAString(0.2));
+        .style('fill', function() {
+          return randomRGBAString('0.2');
+        });
     }
 
-    svg.selectAll('path').call(zoom);
+    layers.call(zoom);
   }
   
   function initialize() {
