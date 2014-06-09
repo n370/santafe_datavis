@@ -29,7 +29,7 @@ function Module(Collection,d3,topojson) {
   
   var collection = Collection.mapCollection;
 
-  function randomColor() {
+  function randomRGBAString(a) { // El argumento a es un número entre 0 y 1 inclusive. 
     var colorScale = d3.scale.linear()
       .domain([0, 10])
       .range([0, 255]);
@@ -39,9 +39,13 @@ function Module(Collection,d3,topojson) {
       var n = Math.floor((Math.random() * 10) + 1);
       v.push(Math.floor(colorScale(n)));
     }
-    var color_string = 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ',0.2)';
-    console.log(color_string);
-    return color_string;
+    if (a) {
+      var color_string = 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ','+ a + ')';
+      return color_string;
+    } else {
+      console.error('ERR : No alpha string value was passed as an argument');
+      return null;
+    }
   }
 
   function render() {
@@ -100,8 +104,7 @@ function Module(Collection,d3,topojson) {
     
     var svg = d3.select('#map-panel')
         .append('svg')
-        .attr('class', 'full-width full-height')
-        .call(zoom);
+        .attr('class', 'full-width full-height');
 
     for(x; x < mapas.length; x++) {
 
@@ -117,14 +120,19 @@ function Module(Collection,d3,topojson) {
       // var departamentos = topojson.feature(geometries, geometries.objects['']);
 
       svg.append('g')
-        .attr('class', '')
+        .attr('class', 'layer')
         .selectAll('path')
         .data(geometries)
         .enter()
         .append("path")
+        .attr('class', function(d) {
+          return d.geometry.type;
+        })
         .attr("d", path)
-        .style('fill', randomColor);
+        .style('fill', randomRGBAString(0.2));
     }
+
+    svg.selectAll('path').call(zoom);
   }
   
   function initialize() {
