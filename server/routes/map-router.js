@@ -48,6 +48,9 @@ function get(req,res) {
       }
       if (isJSON !== false) {
         var geojson = JSON.parse(buf);
+        var start = 0;
+        var end = names[i].length - 8;
+        geojson.name = names[i].substr(start, end);
         console.log('geojson ready');
         layers.push(geojson); 
       }

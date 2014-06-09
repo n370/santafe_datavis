@@ -90,8 +90,14 @@ function Module(Collection,d3,topojson) {
     zoom.on('zoom', zooming);
     zoom.on('zoomend', zoomed);
     
-    var mapas = this.collection.models;
-    console.log('Mapas: ' + mapas);
+    var projection = d3.geo.mercator()
+      .center([-58,-30])
+      .scale(5000);
+
+    var path = d3.geo.path()
+      .projection(projection);
+
+    var models = this.collection.models;
     
     var svg = d3.select('#map-panel')
       .append('svg')
@@ -99,49 +105,60 @@ function Module(Collection,d3,topojson) {
       .attr('height', h);
 
     var layers = svg.append('g').attr('class', 'layers');
-
+    
     var x = 0;
-    for(x; x < mapas.length; x++) {
+    for(x; x < this.collection.length; x++) {
 
-      var geometries = mapas[x].attributes.features;
-
-      var projection = d3.geo.mercator()
-        .center([-58,-30])
-        .scale(5000);
-
-      var path = d3.geo.path()
-        .projection(projection);
+      var layer = models[x].attributes;
 
       layers.append('g')
+        .attr('id', layer.name)
         .attr('class', 'layer')
         .selectAll('path')
-        .data(geometries)
+        .data(layer.features)
         .enter()
         .append("path")
-        .attr("d", path)
-        .attr('class', function(d) {
-          return d.geometry.type;
+        .attr('id', function(d) {
+          if (d.properties.rotulo) {
+            return d.properties.rotulo;
+          } else {
+            return null;
+          }
         })
-        .style('fill', function() {
-          return randomRGBAString('0.2');
-        });
+        .attr('class', function(d) {
+          if (d.properties.rotulo) {
+            return 'feature';
+          } else {
+            return 'feature';
+          }
+        })
+        .attr("d", path);
     }
 
     layers.call(zoom);
   }
   
   function initialize() {
+    var that = this;
     
-    function success(data) {
-      console.log(data);
+    function success(collection) {
       that.render();
+      
+      function parseName(name) {
+
+      }
+
+      var i = 0;
+      for (i; i < collection.models.length; i++) {
+        var name = collection.models[i].attributes.name; 
+        var html = '<div class="sub-menu-item centers">' + name + '</div>';
+        $('#sub-navbar-top').append(html);
+      }
     }
 
     function error() {
       console.log('Error!');
     }
-
-    var that = this;
 
     this.collection.fetch({ 
       success: success, 
@@ -153,7 +170,7 @@ function Module(Collection,d3,topojson) {
     mapView: function() {
       var mapView = Backbone.View.extend({
         collection: collection,
-        events: {},
+        events: { },
         initialize: initialize,
         render: render
       });

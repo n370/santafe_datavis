@@ -9,7 +9,9 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "rotulo": "santafe"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -14560,7 +14562,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "rotulo": "rosario"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -31429,7 +31433,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "rotulo": "venadotuerto"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -33436,7 +33442,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "rotulo": "reconquista"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -50497,7 +50505,9 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "rotulo": "rafaela"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [

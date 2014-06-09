@@ -38,13 +38,12 @@ function Module() {
 
   // Oculta y muestra la sub barra de navegación.
   function toggleSubMenu() {
-    var state = $('#sub-navbar-top').is(':hidden');   
-    if (state) {
-      $('#sub-navbar-top').slideDown();
-      $(this).addClass('button-selected');
+    var display = $('#sub-navbar-top').css('display');   
+    if (display === 'none') {
+      $('#sub-navbar-top').removeClass('hidden');
+      $(this).addClass('column');
     } else {
-      $('#sub-navbar-top').slideUp();
-      $(this).removeClass('button-selected');
+      $('#sub-navbar-top').addClass('hidden');
     }
   }
 
