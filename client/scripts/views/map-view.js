@@ -41,7 +41,6 @@ function Module(Collection,d3,topojson) {
     }
     if (a) {
       var color_string = 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ','+ a + ')';
-      console.log(color_string);
       return color_string;
     } else {
       console.error('ERR : No alpha string value was passed as an argument');
@@ -81,8 +80,8 @@ function Module(Collection,d3,topojson) {
 
     function zoomed() {}
 
-    var w = $('#map-container').css('width');
-    var h = $('#map-container').css('height');
+    var w = $('#map-panel').css('width');
+    var h = $('#map-panel').css('height');
    
     var zoom = d3.behavior.zoom()
       .size([w,h])
@@ -92,10 +91,12 @@ function Module(Collection,d3,topojson) {
     zoom.on('zoomend', zoomed);
     
     var mapas = this.collection.models;
+    console.log('Mapas: ' + mapas);
     
     var svg = d3.select('#map-panel')
-        .append('svg')
-        .attr('class', 'full-width full-height');
+      .append('svg')
+      .attr('width', w)
+      .attr('height', h);
 
     var layers = svg.append('g').attr('class', 'layers');
 
@@ -110,8 +111,6 @@ function Module(Collection,d3,topojson) {
 
       var path = d3.geo.path()
         .projection(projection);
-
-      // var departamentos = topojson.feature(geometries, geometries.objects['']);
 
       layers.append('g')
         .attr('class', 'layer')
@@ -145,7 +144,6 @@ function Module(Collection,d3,topojson) {
     var that = this;
 
     this.collection.fetch({ 
-      // reset: true, 
       success: success, 
       error: error
     });
@@ -161,7 +159,6 @@ function Module(Collection,d3,topojson) {
       });
 
       var maps = new mapView();
-      maps.initialize(); 
     }
   }
 }
