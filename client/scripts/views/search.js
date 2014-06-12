@@ -23,18 +23,27 @@
 }
 */
 
-var dependencies = ['views/structure','views/search','views/map-view','views/info-view'];
+var dependencies = [];
 
-function Module(structure,search,maps,info) {
+function Module() {
+
+  function initialize() {
+    this.render(); 
+  }
+
+  function render() {
+    this.$el.prepend(this.template());
+    return this;
+  }
 
   return { 
-    Views: function() {
-      var Structure = new structure.Structure();
-      var Search = new search.Search();
-      var Maps = new maps.mapView();
-
-      console.log(Maps.layers);
-    }
+    Search: Backbone.View.extend({
+      el: '#map-panel',
+      template: _.template($('#search').html()),
+      events: {},
+      initialize: initialize,
+      render: render
+    })
   }
 }
 

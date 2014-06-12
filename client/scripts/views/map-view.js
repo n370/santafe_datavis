@@ -101,8 +101,8 @@ function Module(Collection,d3,topojson) {
     
     var svg = d3.select('#map-panel')
       .append('svg')
-      .attr('width', w)
-      .attr('height', h);
+      .attr('width', '100%')
+      .attr('height', '100%');
 
     var layers = svg.append('g').attr('class', 'layers');
     
@@ -118,6 +118,7 @@ function Module(Collection,d3,topojson) {
         .data(layer.features)
         .enter()
         .append("path")
+        .style('fill', function() { return randomRGBAString('0.2') })
         .attr('id', function(d) {
           if (d.properties.rotulo) {
             return d.properties.rotulo;
@@ -141,19 +142,9 @@ function Module(Collection,d3,topojson) {
   function initialize() {
     var that = this;
     
-    function success(collection) {
+    function success() {
       that.render();
-      
-      function parseName(name) {
-
-      }
-
-      var i = 0;
-      for (i; i < collection.models.length; i++) {
-        var name = collection.models[i].attributes.name; 
-        var html = '<div class="sub-menu-item centers">' + name + '</div>';
-        $('#sub-navbar-top').append(html);
-      }
+       
     }
 
     function error() {
@@ -167,16 +158,12 @@ function Module(Collection,d3,topojson) {
   }
 
   return { 
-    mapView: function() {
-      var mapView = Backbone.View.extend({
-        collection: collection,
-        events: { },
-        initialize: initialize,
-        render: render
-      });
-
-      var maps = new mapView();
-    }
+    mapView: Backbone.View.extend({
+      collection: collection,
+      events: { },
+      initialize: initialize,
+      render: render
+    })
   }
 }
 

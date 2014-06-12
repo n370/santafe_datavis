@@ -28,7 +28,7 @@ var dependencies = [];
 function Module() {
 
   function initialize() {
-
+    this.render();
   }
 
   function render() {
@@ -37,18 +37,13 @@ function Module() {
   }
 
   return { 
-    Structure: function() {
-      var Structure = Backbone.View.extend({
-        el: 'body',
-        template: _.template($('#app-structure').html()),
-        events: {},
-        initialize: initialize,
-        render: render,
-      });
-
-      var structure = new Structure();
-      structure.render(); 
-    }
+    Structure: Backbone.View.extend({
+      el: 'body',
+      template: _.template($('#structure').html()),
+      events: {},
+      initialize: initialize,
+      render: render,
+    }) 
   }
 }
 

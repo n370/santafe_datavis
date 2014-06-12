@@ -30,7 +30,7 @@
   <meta name="viewport" 
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
   <link href="images/favicon.ico" rel="icon" type="image/ico"/>
-  <link href="styles/flex.css" rel="stylesheet" type="text/css">
+  <link href="styles/main.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
 
   <script type="text/javascript">
@@ -43,9 +43,9 @@
 
     requirejs.config({
         paths: {
-            collections: 'scripts/collections/',
-            models: 'scripts/models/',
-            views: 'scripts/views/',
+            collections: 'scripts/collections',
+            models: 'scripts/models',
+            views: 'scripts/views',
             backbone: 'bower_components/backbone/backbone',
             d3: 'bower_components/d3/d3.min',
             jquery: 'bower_components/jquery/dist/jquery.min',
@@ -64,37 +64,28 @@
     requirejs(dependencies, client);     // Inicializa la aplicación.
   </script>
   
-  <script type="text/template" id="app-structure">
-
-    <nav id='navbar-top' class="flex-container row fixed width-12 easy-shadow padding">
-
-      <div class='flex-container row centered width-8 justify-end'>
-        <img id='logo' class='full-height' src='images/logo.svg'/>
-      </div>
-
-    </nav>
-
-    <nav id='sub-navbar-top' class="flex-container centers fixed width-12 easy-shadow hidden padding"></nav>
-
+  <script type="text/template" id="structure">
     <section id='main-section' class='flex-container row fixed width-12'>
-
-      <div id='map-panel' class='width-4 limit'></div>
-      <div id='info-panel' class='width-8'></div>
-
+      <div id='map-panel' class='flex-1 no-shrink easy-shadow'></div>
+      <div id='info-panel' class='flex-1 no-shrink'></div>
     </section>
-
   </script>
 
-  <script type="text/template" id="app-navigation">
-        <div class='flex-container row centered width-4 limit'>
-        <div class='flex-container row centered width-4'>
-          <span id='button-bars' class='fa fa-bars button'></span>
-        </div>
-        <div class='flex-container row centered width-8 stretches'>
-          <input type='text' placeholder='Hace una búsqueda!' class='width-8'/>
-          <span class='fa fa-search button'></span>
-        </div>
+  <script type="text/template" id="search">
+    <div id='search-component' class='flex-container width-6 fixed centers column'>
+      <div class='flex-container width-10 centered stretches row easy-shadow'>
+        <input type='text' placeholder='Hace una búsqueda!' class='padding flex-2 text-large'/>
+        <span class='fa fa-search button padding flex-container row centers justify-center flex-1'></span>
       </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="main-menu">
+    <div class=''>
+      <div class=''>Circunscripciones</div>
+      <div class=''>Circuitos</div>      
+      <div class=''>Distritos</div>
+    </div>
   </script>
 
   <script type="text/template" id="profile_card">

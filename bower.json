@@ -22,6 +22,7 @@
     "underscore": "~1.6.0",
     "backbone": "~1.1.2",
     "d3": "~3.4.8",
-    "topojson": "~1.6.13"
+    "topojson": "~1.6.13",
+    "fontawesome": "~4.1.0"
   }
 }

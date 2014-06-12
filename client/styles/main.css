@@ -1,0 +1,239 @@
+/*
+{
+  "authors": [
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ],
+  "contributors": [    
+    {
+      "name": {
+        "first": "Dylson",
+        "last": "Valente Neto",
+        "alias": ["n370", "n370n370"]
+      },  
+      "email": ["dvalenteneto@santafe.gov.ar"]
+    } 
+  ] 
+}
+*/
+
+@import url("../bower_components/fontawesome/css/font-awesome.min.css");
+
+.layer {
+  fill: silver;
+}
+
+.active-layer path:hover {
+  fill: rgba(0,200,0,1);
+  cursor: pointer;
+}
+
+.feature {
+  fill : rgba(20,20,200, 0.2);
+}
+
+.flex-1 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.flex-2 {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+}
+
+.no-shrink {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+@media only screen and (min-width: 845px) {
+  #logo {
+    display: inline;
+    width: 100px;
+  }
+
+  .full-height {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 845px) {
+  #logo {
+    display: none;
+  }
+}
+
+  * {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  body {
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    top: 0;
+    bottom: 0;
+  }
+
+  .flex-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .row {  
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+  }
+
+  .column { 
+    -webkit-flex-flow: column nowrap;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+  }
+
+  .centers {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .centered {
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+  }
+
+  .stretches {
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+  }
+  
+  .justify-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .fixed {
+    position: fixed;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .padding {
+    padding: 0.2em;
+  }
+
+  #main-section {
+    height: 100%;
+  }
+
+  #map-panel {
+    background: rgba(200,220,230,1);
+    z-index: 1; 
+  }
+  
+  #info-panel {
+    background: rgba(200,200,200,1);
+    z-index: 0;
+  }
+  
+  .button {
+    cursor: pointer;
+    background: gray;
+    color: silver;
+    text-shadow: rgba(0,0,0,0.1) -1px 0, rgba(0,0,0,0.1) 0 -1px, rgba(255,255,255,0.1) 1px 0, rgba(255,255,255,0.1) 0 1px,rgba(0,0,0,0.1) -1px -1px, rgba(255,255,255,0.1) 1px 1px;
+  }
+
+  .width-1 {
+    width: 8.33%;
+    min-width: 8.33%;
+  }
+
+  .width-2 {
+    width: 16.66%;
+    min-width: 16.66%;
+  }
+
+  .width-4 {
+    width: 33.32%;
+  }
+
+  .width-6 {
+    width: 50%;
+  }
+
+  .width-7 {
+    width: 58.31%;
+  }
+
+  .width-8 {
+    width: 66.64%;
+  }
+
+  .width-10 {
+    width: 83.30%;
+  }
+
+  .width-11 {
+    width: 91.67%;
+  }
+
+  .width-12, .full-width {
+    width: 100%;
+  }
+
+  .justify-end {
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+
+  .easy-shadow {
+    box-shadow: 0px 0.5px 2px -1px;
+  }
+
+  .zooming {
+    cursor: move;
+  }
+
+  .red {
+    color: red;
+  }
+
+  #search-component {
+    top : 20px;
+  }
+
+.text-large {
+  font-size: 1em;
+}
