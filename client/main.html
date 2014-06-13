@@ -56,12 +56,11 @@
 
     var dependencies = ['backbone','d3','jquery','topojson','underscore','views/views'];
 
-    // Función principal de la aplicación.
     function client(Backbone,d3,$,topojson,_,View) {
       View.Views();
     }
 
-    requirejs(dependencies, client);     // Inicializa la aplicación.
+    requirejs(dependencies, client); // Inicia la aplicación.
   </script>
   
   <script type="text/template" id="structure">
@@ -72,19 +71,27 @@
   </script>
 
   <script type="text/template" id="search">
-    <div id='search-component' class='flex-container width-6 fixed centers column'>
+    <div class='flex-container width-6 fixed centers column from-top'>
       <div class='flex-container width-10 centered stretches row easy-shadow'>
-        <input type='text' placeholder='Hace una búsqueda!' class='padding flex-2 text-large'/>
+        <input class='padding flex-3 text-large' type='text' placeholder='Haga una búsqueda!'/>
         <span class='fa fa-search button padding flex-container row centers justify-center flex-1'></span>
       </div>
     </div>
   </script>
 
-  <script type="text/template" id="main-menu">
-    <div class=''>
-      <div class=''>Circunscripciones</div>
-      <div class=''>Circuitos</div>      
-      <div class=''>Distritos</div>
+  <script type="text/template" id="brand">
+    <div class='flex-container width-6 fixed centers column from-top'>
+      <div class='flex-container width-11 column align-right'>
+        <img class='width-3' src='images/logo.svg'/>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="control">
+    <div class='flex-container column width-12'>
+       <div class='flex-container column width-12 text-center'><%= names[0] %></div>
+       <div class='flex-container column width-12 text-center'><%= names[1] %></div>
+       <div class='flex-container column width-12 text-center'><%= names[2] %></div>
     </div>
   </script>
 
