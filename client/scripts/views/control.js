@@ -28,17 +28,17 @@ var dependencies = [];
 function Module() {
 
   function initialize() {
-    this.render(); 
   }
 
   function render() {
     this.$el.append(this.template(this.names));
-    return this;
   }
+  
+  _.templateSettings.variable = "names";
 
   return { 
     Control: Backbone.View.extend({
-      el: '#info-panel',
+      el: '#info-panel-body',
       template: _.template($('#control').html()),
       events: {},
       initialize: initialize,

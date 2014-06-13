@@ -23,13 +23,14 @@
 }
 */
 
-var dependencies = ["collections/map-collection","d3","topojson"];
+var dependencies = ["collections/map-collection","views/control","d3","topojson"];
 
-function Module(Collection,d3,topojson) {
+function Module(Collection,control,d3,topojson) {
   
   var collection = Collection.mapCollection;
 
-  function randomRGBAString(a) { // El argumento a es un número entre 0 y 1 inclusive. 
+  // El argumento a es un número entre 0 y 1 inclusive, depende de D3. 
+  function randomRGBAString(a) { 
     var colorScale = d3.scale.linear()
       .domain([0, 10])
       .range([0, 255]);
@@ -118,7 +119,7 @@ function Module(Collection,d3,topojson) {
         .data(layer.features)
         .enter()
         .append("path")
-        .style('fill', function() { return randomRGBAString('0.2') })
+        .style('fill', function() { return randomRGBAString('1') })
         .attr('id', function(d) {
           if (d.properties.rotulo) {
             return d.properties.rotulo;
@@ -141,10 +142,14 @@ function Module(Collection,d3,topojson) {
   
   function initialize() {
     var that = this;
-    
-    function success() {
+    var thatControl = control; // Import control to initialize's scope.
+
+    function success(collection) {
+      var ctrl = new thatControl.Control();
+      ctrl.names = collection.models;
+
       that.render();
-       
+      ctrl.render();
     }
 
     function error() {

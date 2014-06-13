@@ -62,42 +62,40 @@
 
     requirejs(dependencies, client); // Inicia la aplicación.
   </script>
-  
+
   <script type="text/template" id="structure">
-    <section id='main-section' class='flex-container row fixed width-12'>
-      <div id='map-panel' class='flex-1 no-shrink easy-shadow'></div>
-      <div id='info-panel' class='flex-1 no-shrink'></div>
+    <section id='main-section' class='flex-container row fixed flex-width-12'>
+      <div id='map-panel' class='flex-1 no-shrink bottom-layer'></div>
+      <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards top-layer'>
+        <div id='info-panel-header' class='flex-container row centers'></div>
+        <div id='info-panel-body' class=''></div>
+      </div>
     </section>
   </script>
 
   <script type="text/template" id="search">
-    <div class='flex-container width-6 fixed centers column from-top'>
-      <div class='flex-container width-10 centered stretches row easy-shadow'>
-        <input class='padding flex-3 text-large' type='text' placeholder='Haga una búsqueda!'/>
-        <span class='fa fa-search button padding flex-container row centers justify-center flex-1'></span>
+    <div class='flex-container flex-width-6 fixed centers column from-top-20'>
+      <div class='flex-container flex-width-10 width-10 centered stretches row easy-shadow'>
+        <input class='padding flex-3 form-font flex-width-3' type='text' placeholder='Haga una búsqueda!'/>
+        <span class='fa fa-search fa-lg button padding flex-container row centers justify-center flex-1'></span>
       </div>
     </div>
   </script>
 
   <script type="text/template" id="brand">
-    <div class='flex-container width-6 fixed centers column from-top'>
-      <div class='flex-container width-11 column align-right'>
-        <img class='width-3' src='images/logo.svg'/>
+    <div class='flex-container flex-width-12 column centers'>
+      <div class='flex-container flex-width-10 column align-right'>
+        <img class='flex-width-3 width-5 from-top-20' src='images/logo.svg'/>
       </div>
     </div>
   </script>
 
   <script type="text/template" id="control">
-    <div class='flex-container column width-12'>
-       <div class='flex-container column width-12 text-center'><%= names[0] %></div>
-       <div class='flex-container column width-12 text-center'><%= names[1] %></div>
-       <div class='flex-container column width-12 text-center'><%= names[2] %></div>
+    <div class='flex-container column flex-width-12'>
+      <% _.each( names, function( name ) { %>
+       <div class='flex-container column flex-width-12 text-center'><%= name.attributes.name %></div>
+      <% }); %>
     </div>
-  </script>
-
-  <script type="text/template" id="profile_card">
-    // A Underscore template to be loaded
-    <h1><%= name.first + ' ' + name.last %></h1>
   </script>
 </head>
 <body></body>

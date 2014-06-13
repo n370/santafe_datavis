@@ -38,7 +38,7 @@ function Module() {
 
   return { 
     Brand: Backbone.View.extend({
-      el: '#info-panel',
+      el: '#info-panel-header',
       template: _.template($('#brand').html()),
       events: {},
       initialize: initialize,

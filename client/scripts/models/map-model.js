@@ -26,26 +26,28 @@
 var dependencies = ['backbone'];
 
 function Module(Backbone) {
+  
+  function initialize() {
+    this.on('invalid', function(model, error){
+      console.log(error);
+    }),
+    this.on('change', function() {
+      console.log('Values for this model has changed.');
+    }),
+    this.on('change:alias', function() {
+      console.log('Alias value for this model has changed.');
+    })
+  }
+
   return {
     mapModel: Backbone.Model.extend({
-      initialize: function(){
-        this.on('invalid', function(model, error){
-          console.log(error);
-        }),
-        this.on('change', function() {
-          console.log('Values for this model has changed.');
-        }),
-        this.on('change:alias', function() {
-          console.log('Alias value for this model has changed.');
-        })
-      },
+      initialize: initialize,
 
       // Define attributos por padrón para
       // cada nuevo modelo.
-      defaults: { 
-        // Acá entra una lista associativa
-        // con atributos y valores por defecto.
-      }, 
+      // Acá entra una lista associativa
+      // con atributos y valores por defecto.
+      defaults: { }, 
       
       // Valida los modelos y retorna null  
       // si és valido. Emite 'invalid' si es inválida.
