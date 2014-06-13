@@ -36,3 +36,4 @@ Visitá [http://localhost:1337/](http://localhost:1337/) en tu navegador.
 ![20140512_001](docs/screenshots/20140512_001.png)
 ![20140512_002](docs/screenshots/20140512_002.png)
 ![20140608_001](docs/screenshots/20140608_001.png)
+![20140613_001](docs/screenshots/20140613_001.png)
