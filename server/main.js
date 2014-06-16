@@ -36,4 +36,4 @@ server.use('/', staticFiles);
 server.use('/maps', mapRoutes);
 
 server.listen(1337);
-console.log('Server running on port 1337');
+console.log('HTTP server running on port 1337');

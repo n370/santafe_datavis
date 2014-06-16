@@ -21,7 +21,7 @@
     } 
   ] 
 }
-*/
+*/  
 var dependencies = ["models/map-model","backbone"];
 
 function Module(Model, Backbone) { 
