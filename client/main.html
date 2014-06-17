@@ -22,6 +22,7 @@
   ] 
 }
 -->
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -54,10 +55,13 @@
         }
     });
 
-    var dependencies = ['backbone','d3','jquery','topojson','underscore','views/views'];
+    var dependencies = ['views/structure','views/brand','views/search','collections/Maps'];
 
-    function client(Backbone,d3,$,topojson,_,View) {
-      View.Views();
+    function client(structure,brand,search,maps) {
+      var Structure = new structure.Structure();
+      var Brand = new brand.Brand(); 
+      var Search = new search.Search();
+      var map_collection = new maps.Maps();
     }
 
     requirejs(dependencies, client); // Inicia la aplicación.
@@ -65,8 +69,8 @@
 
   <script type="text/template" id="structure">
     <section id='main-section' class='flex-container row fixed flex-width-12'>
-      <div id='map-panel' class='flex-1 no-shrink bottom-layer'></div>
-      <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards top-layer'>
+      <div id='map-panel' class='flex-1 no-shrink top-layer'></div>
+      <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards bottom-layer'>
         <div id='info-panel-header' class='flex-container row centers'></div>
         <div id='info-panel-body' class=''></div>
       </div>

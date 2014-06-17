@@ -1,7 +1,7 @@
 {
   "name": "santafe_datavis",
   "description": "El proyecto de visualización interactiva de datos de la província de Santa Fe, Argentina.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "preferGlobal": false,
   "private": true,
   "author": {
@@ -27,8 +27,7 @@
   },
   "dependencies": {
     "bower": "^1.3.3",
-    "express": "^4.1.1",
-    "stream-array": "^0.1.3"
+    "express": "^4.1.1"
   },
   "licence": "MIT",
   "engines": {

@@ -23,12 +23,14 @@
 }
 */
 
-var dependencies = ['backbone'];
+var dependencies = ['views/map','backbone'];
 
-function Module(Backbone) {
+function Module(map,Backbone) {
   
   function initialize() {
-    this.on('invalid', function(model, error){
+    var m = new map.Map({ model: this });
+
+    /*this.on('invalid', function(model, error){
       console.log(error);
     }),
     this.on('change', function() {
@@ -36,24 +38,25 @@ function Module(Backbone) {
     }),
     this.on('change:alias', function() {
       console.log('Alias value for this model has changed.');
-    })
+    })*/
+
   }
 
-  return {
-    mapModel: Backbone.Model.extend({
-      initialize: initialize,
+  var Model = Backbone.Model.extend({
+    initialize: initialize,
 
-      // Define attributos por padrón para
-      // cada nuevo modelo.
-      // Acá entra una lista associativa
-      // con atributos y valores por defecto.
-      defaults: { }, 
-      
-      // Valida los modelos y retorna null  
-      // si és valido. Emite 'invalid' si es inválida.
-      validate: function(attributes) {}
-    })
-  }  
+    // Define attributos por padrón para
+    // cada nuevo modelo.
+    // Acá entra una lista associativa
+    // con atributos y valores por defecto.
+    defaults: { }, 
+    
+    // Valida los modelos y retorna null  
+    // si és valido. Emite 'invalid' si es inválida.
+    validate: function(attributes) {}
+  })
+
+  return { Map: Model }  
 }
 
 define(dependencies, Module);

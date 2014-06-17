@@ -22,17 +22,20 @@
   ] 
 }
 */  
-var dependencies = ["models/map-model","backbone"];
+var dependencies = ["models/Map","backbone"];
 
 function Module(Model, Backbone) { 
-
-  var collection = Backbone.Collection.extend({
-    model: Model.mapModel,
-    url: '/maps' // Rota HTTP que mandará uma Array de JSON.
-  });
-  return {
-    mapCollection: new collection()
+  function initialize() {
+    this.fetch();
   }
+
+  var Collection = Backbone.Collection.extend({
+    model: Model.Map,
+    url: '/maps', // Rota HTTP que mandará uma Array de JSON.
+    initialize: initialize
+  });
+
+  return { Maps: Collection }
 }
 
 define(dependencies, Module);

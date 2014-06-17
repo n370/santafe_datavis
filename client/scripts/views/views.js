@@ -23,15 +23,13 @@
 }
 */
 
-var dependencies = ['views/structure','views/brand','views/search','views/map-view'];
+var dependencies = ['views/map-view'];
 
 function Module(structure,brand,search,maps) {
 
   return { 
     Views: function() {
-      var Structure = new structure.Structure();
-      var Brand = new brand.Brand(); 
-      var Search = new search.Search();
+
       var Maps = new maps.mapView();
     }
   }

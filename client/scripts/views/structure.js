@@ -23,9 +23,9 @@
 }
 */
 
-var dependencies = [];
+var dependencies = ['backbone'];
 
-function Module() {
+function Module(Backbone) {
 
   function initialize() {
     this.render();
