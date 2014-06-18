@@ -23,26 +23,35 @@
 }
 */
 
-var dependencies = [];
+var dependencies = ['underscore','backbone'];
 
-function Module() {
+function Module(_,Backbone) {
+
+  function click_departamentos_santafe() {
+    var name = this.model.attributes.name;
+    var capa = $('#'+ name);
+    if ('departamentos_santafe' === name) {
+      console.log(capa);
+      capa.toggleClass('hidden');
+    }
+  }
 
   function initialize() {
+    this.name = this.model.attributes.name;
+    this.$el.append(this.template(this.model));
   }
 
-  function render() {
-    this.$el.append(this.template(this.names));
-  }
-  
-  _.templateSettings.variable = "names";
+  _.templateSettings.variable = "model";
 
   return { 
     Control: Backbone.View.extend({
-      el: '#info-panel-body',
+      el: '#prueba',
       template: _.template($('#control').html()),
-      events: {},
+      events: {
+        'click #button-departamentos_santafe': 'click_departamentos_santafe'
+      },
       initialize: initialize,
-      render: render
+      click_departamentos_santafe: click_departamentos_santafe
     })
   }
 }

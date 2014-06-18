@@ -26,10 +26,10 @@ function Module(d3) {
     // El argumento alpha es una string de texto com um
     // número entre 0 y 1 inclusive, depende de D3. 
     randomRGBAString: function(a,r,g,b) {
-      console.log(a === undefined);
-      console.log(r === undefined);
-      console.log(g === undefined);
-      console.log(b === undefined);
+      // console.log(a === undefined);
+      // console.log(r === undefined);
+      // console.log(g === undefined);
+      // console.log(b === undefined);
 
       var v = {
         r: r,
@@ -69,7 +69,7 @@ function Module(d3) {
       
       if (a) {
         var str = 'rgba('+r+','+g+','+b+','+a+')';
-        console.log(str);
+        // console.log(str);
         return str;
       } else {
         var err = 'ERR : No alpha string value was passed as an argument';

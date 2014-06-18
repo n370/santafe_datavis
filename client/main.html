@@ -76,7 +76,9 @@
       </div>
       <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards bottom-layer'>
         <div id='info-panel-header' class='flex-container row centers'></div>
-        <div id='info-panel-body' class=''></div>
+        <div id='info-panel-body' class=''>
+          <div id='prueba' class='flex-container column flex-width-12'></div>
+        </div>
       </div>
     </section>
   </script>
@@ -99,11 +101,7 @@
   </script>
 
   <script type="text/template" id="control">
-    <div class='flex-container column flex-width-12'>
-      <% _.each( names, function( name ) { %>
-       <div class='flex-container column flex-width-12 text-center'><%= name.attributes.name %></div>
-      <% }); %>
-    </div>
+       <div id='button-<%= model.attributes.name %>' class='flex-container column flex-width-12 text-center'><%= model.attributes.name %></div>
   </script>
 </head>
 <body></body>
