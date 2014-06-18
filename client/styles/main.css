@@ -25,17 +25,15 @@
 
 @import url("../bower_components/fontawesome/css/font-awesome.min.css");
 
-.layer {
-  fill: silver;
-}
-
 .active-layer path:hover {
   fill: rgba(0,200,0,1);
   cursor: pointer;
 }
 
 .feature {
-  fill : rgba(20,20,200, 0.2);
+}
+
+.layer {
 }
 
 .flex-1 {
@@ -246,8 +244,6 @@
     box-shadow: 5px 5px 20px 1px;
   }
 
-
-
   .zooming {
     cursor: move;
   }
@@ -255,8 +251,6 @@
   .red {
     color: red;
   }
-
-
 
 .text-center {
   text-align: center;

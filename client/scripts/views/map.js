@@ -23,9 +23,9 @@
 }
 */
 
-var dependencies = ["d3","topojson",'scripts/d3-utilities'];
+var dependencies = ["backbone","d3","topojson",'scripts/d3-utilities'];
 
-function Module(d3,topojson,util) {
+function Module(Backbone,d3,topojson,util) {
 
   function initialize() {
 
@@ -39,17 +39,12 @@ function Module(d3,topojson,util) {
     }
 
     function zoomed() {}
-
+    
     var w = $('#map-panel').css('width');
     var h = $('#map-panel').css('height');
-   
-    var zoom = d3.behavior.zoom()
-      .size([w,h])
-      .scaleExtent([1,20]);
     
-    zoom.on('zoom', zooming);
-    zoom.on('zoomend', zoomed);
-    
+    var layer = this.model.attributes;
+
     var projection = d3.geo.mercator()
       .center([-58,-30])
       .scale(5000);
@@ -57,15 +52,15 @@ function Module(d3,topojson,util) {
     var path = d3.geo.path()
       .projection(projection);
     
-    var svg = d3.select('#map-panel')
-      .append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%'); // Pasar para otro lado.
-
-    var layers = svg.append('g').attr('class', 'layers');
-    layers.call(zoom); // Esto también.
-
-    var layer = this.model.attributes;
+    var zoom = d3.behavior.zoom()
+      .size([w,h])
+      .scaleExtent([1,20])
+      .on('zoom', zooming)
+      .on('zoomend', zoomed);
+    
+    var layers = d3.select('#map-panel svg g');
+    
+    layers.call(zoom);
 
     layers.append('g')
       .attr('id', layer.name)
@@ -83,13 +78,6 @@ function Module(d3,topojson,util) {
           return d.properties.rotulo;
         } else {
           return null;
-        }
-      })
-      .attr('class', function(d) {
-        if (d.properties.rotulo) {
-          return 'feature';
-        } else {
-          return 'feature';
         }
       })
       .attr("d", path);

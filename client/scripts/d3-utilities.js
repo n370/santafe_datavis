@@ -26,7 +26,11 @@ function Module(d3) {
     // El argumento alpha es una string de texto com um
     // número entre 0 y 1 inclusive, depende de D3. 
     randomRGBAString: function(a,r,g,b) {
-      
+      console.log(a === undefined);
+      console.log(r === undefined);
+      console.log(g === undefined);
+      console.log(b === undefined);
+
       var v = {
         r: r,
         g: g,
@@ -45,19 +49,19 @@ function Module(d3) {
         }
       }
 
-      if (r === undefined || r === false) {
+      if (r === undefined || r === true) {
         r = v.r;
       } else {
         r = 0;
       }
 
-      if (g === undefined || g === false) {
+      if (g === undefined || g === true) {
         g = v.g; 
       } else {
         g = 0;
       } 
 
-      if (b === undefined || b === false) {
+      if (b === undefined || b === true) {
         b = v.b;
       } else {
         b = 0;
