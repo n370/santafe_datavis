@@ -27,31 +27,64 @@ var dependencies = ['underscore','backbone'];
 
 function Module(_,Backbone) {
 
-  function click_departamentos_santafe() {
+  function click_circuitos_judiciales() {
     var name = this.model.attributes.name;
-    var capa = $('#'+ name);
-    if ('departamentos_santafe' === name) {
-      console.log(capa);
-      capa.toggleClass('hidden');
+    var capa = document.querySelector('#'+ name);
+    var button = document.querySelector('#button-'+ name);
+    if ('circuitos_judiciales' === name) {
+      capa.classList.toggle('hidden');
+      button.classList.toggle('button-selected');
+    }
+  }  
+
+  function click_circunscripciones_judiciales() {
+    var name = this.model.attributes.name;
+    var capa = document.querySelector('#'+ name);
+    var button = document.querySelector('#button-'+ name);
+    if ('circunscripciones_judiciales' === name) {
+      capa.classList.toggle('hidden');
+      button.classList.toggle('button-selected');
+    }
+  }  
+
+  function click_distritos_judiciales() {
+    var name = this.model.attributes.name;
+    var capa = document.querySelector('#'+ name);
+    var button = document.querySelector('#button-'+ name);
+    if ('distritos_judiciales' === name) {
+      capa.classList.toggle('hidden');
+      button.classList.toggle('button-selected');
     }
   }
 
   function initialize() {
-    this.name = this.model.attributes.name;
-    this.$el.append(this.template(this.model));
+    var name = this.model.attributes.name;
+    
+    function parseName(str) {
+      var name = str; 
+      matched = name.match(/\w+_/).toString(); 
+      subgroup = matched.substring(0, matched.length - 1);
+      return subgroup;
+    }
+
+    this.$el.append(this.template([name,parseName(name)]));
   }
 
-  _.templateSettings.variable = "model";
+  _.templateSettings.variable = "name";
 
   return { 
     Control: Backbone.View.extend({
       el: '#prueba',
       template: _.template($('#control').html()),
       events: {
-        'click #button-departamentos_santafe': 'click_departamentos_santafe'
+        'click #button-circuitos_judiciales': 'click_circuitos_judiciales',
+        'click #button-circunscripciones_judiciales': 'click_circunscripciones_judiciales',
+        'click #button-distritos_judiciales': 'click_distritos_judiciales'
       },
       initialize: initialize,
-      click_departamentos_santafe: click_departamentos_santafe
+      click_circuitos_judiciales: click_circuitos_judiciales,
+      click_circunscripciones_judiciales: click_circunscripciones_judiciales,
+      click_distritos_judiciales: click_distritos_judiciales
     })
   }
 }

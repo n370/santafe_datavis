@@ -51,11 +51,27 @@ function get(req,res) {
         var start = 0;
         var end = names[i].length - 8;
         geojson.name = names[i].substr(start, end);
+        if (geojson.name === 'america_continental') {
+          geojson.order = 1;
+        } else if (geojson.name === 'provincias_argentinas') {
+          geojson.order = 2;
+        } else if (geojson.name === 'departamentos_santafe') {
+          geojson.order = 3;
+        } else if (geojson.name === 'circunscripciones_judiciales') {
+          geojson.order = 4;
+        } else if (geojson.name === 'distritos_judiciales') {
+          geojson.order = 5;
+        } else if (geojson.name === 'circuitos_judiciales') {
+          geojson.order = 6;
+        }
         console.log('geojson ready');
         layers.push(geojson); 
       }
     }
   }
+  layers.sort(function(a, b) {
+    return a.order - b.order;
+  });
   res.json(layers);
 }
 

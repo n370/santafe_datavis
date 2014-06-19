@@ -28,18 +28,24 @@ var dependencies = ['views/map','views/control','backbone'];
 function Module(map,control,Backbone) {
   
   function initialize() {
+    var name = this.attributes.name;
     var m = new map.Map({ model: this });
-    var c = new control.Control({ model: this });
 
-    /*this.on('invalid', function(model, error){
-      console.log(error);
-    }),
-    this.on('change', function() {
-      console.log('Values for this model has changed.');
-    }),
-    this.on('change:alias', function() {
-      console.log('Alias value for this model has changed.');
-    })*/
+    if (name === 'america_continental' || name === 'provincias_argentinas' || name === 'departamentos_santafe') {
+      return;
+    } else {
+      var c = new control.Control({ model: this });
+    }
+
+    // this.on('invalid', function(model, error){
+    //   console.log(error);
+    // }),
+    // this.on('change', function() {
+    //   console.log('Values for this model has changed.');
+    // }),
+    // this.on('change:alias', function() {
+    //   console.log('Alias value for this model has changed.');
+    // })
 
   }
 

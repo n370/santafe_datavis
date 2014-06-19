@@ -60,7 +60,7 @@
     function client(structure,brand,search,maps) {
       var Structure = new structure.Structure();
       var Brand = new brand.Brand(); 
-      var Search = new search.Search();
+      // var Search = new search.Search();
       var map_collection = new maps.Maps();
     }
 
@@ -87,7 +87,7 @@
     <div class='flex-container flex-width-6 fixed centers column from-top-20'>
       <div class='flex-container flex-width-10 width-10 centered stretches row easy-shadow'>
         <input class='padding flex-3 form-font flex-width-3' type='text' placeholder='Haga una búsqueda!'/>
-        <span class='fa fa-search fa-lg button padding flex-container row centers justify-center flex-1'></span>
+        <span class='fa fa-search fa-lg button search-button padding flex-container row centers justify-center flex-1'></span>
       </div>
     </div>
   </script>
@@ -96,12 +96,15 @@
     <div class='flex-container flex-width-12 column centers'>
       <div class='flex-container flex-width-10 column align-right'>
         <img class='flex-width-3 width-5 from-top-20' src='images/logo.svg'/>
+        </br>
+        <h4>Poder Judicial de la província de Santa Fe</h4>
+        </br>
       </div>
     </div>
   </script>
 
   <script type="text/template" id="control">
-       <div id='button-<%= model.attributes.name %>' class='flex-container column flex-width-12 text-center'><%= model.attributes.name %></div>
+       <div id='button-<%= name[0] %>' class='flex-container column flex-width-12 text-center button vertically-spaced'><%= name[1] %></div>
   </script>
 </head>
 <body></body>

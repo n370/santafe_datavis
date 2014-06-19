@@ -64,14 +64,40 @@ function Module(Backbone,d3,topojson,util) {
 
     layers.append('g')
       .attr('id', layer.name)
-      .attr('class', 'layer')
+      .attr('class', function() {
+        if (layer.name === 'america_continental') {
+          return 'layer';
+        } else if (layer.name === 'provincias_argentinas') {
+          return 'layer';
+        } else if (layer.name === 'departamentos_santafe') {
+          return 'layer';
+        } else {
+          return 'layer hidden';
+        }
+      })
       .selectAll('path')
       .data(layer.features)
       .enter()
       .append("path")
-      .style('fill', function() { 
-        var str = util.randomRGBAString('0.1');
-        return str; 
+      .style('fill', function() {
+        var str = util.randomRGBAString('0.6');
+
+        if (layer.name === 'america_continental') {
+          return 'rgba(20,20,20,0.1 )';
+        } else if (layer.name === 'provincias_argentinas') {
+          return 'rgba(50,50,50,0.2)';
+        } else if (layer.name === 'departamentos_santafe') {
+          return 'rgba(80,80,80,0.3)';
+        } else {
+          return str;
+        } 
+      })
+      .style('stroke', function() {
+        if (layer.name === 'provincias_argentinas') {
+          return 'rgba(0,0,0,1)';
+        } else if (layer.name === 'departamentos_santafe') {
+          return 'rgba(100,100,100,1)';
+        } 
       })
       .attr('id', function(d) {
         if (d.properties.rotulo) {
