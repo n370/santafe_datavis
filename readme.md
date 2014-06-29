@@ -12,9 +12,23 @@ Actualmente trabajamos las visualizaciones en caracter experimental. Con una mir
 #### Biblioteca
 [PostgreSQL](http://www.postgresql.org/), [Postgis](http://postgis.net/), [Require.js](http://requirejs.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Google Fonts](http://www.google.com/fonts), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), [Backbone](http://backbonejs.org/), [Underscore](http://underscorejs.org/), [jQuery](http://jquery.com/), [D3](http://d3js.org/), [node-postgres](https://github.com/brianc/node-postgres/), [node-uuid](https://github.com/broofa/node-uuid/), [HTML](http://www.w3.org/html/wg/drafts/html/master/), [CSS](http://www.w3.org/TR/css-2010/), [JSON](http://json.org/), [GeoJSON](http://geojson.org/), [JSON-js](https://github.com/douglascrockford/JSON-js), [TopoJSON](http://github.com/mbostock/topojson), [CDNJS](http://cdnjs.com/), [Mapshaper](https://github.com/mbloch/mapshaper). 
 
-#### Contribuya
-Instale [Node.js](http://nodejs.org/).  
-Instale [Git](http://git-scm.com/).  
+#### Contribuyendo
+
+¡Estamos contentos por que querés contribuir! es simples:
+
+- Instale [Node.js](http://nodejs.org/).  
+- Instale [Git](http://git-scm.com/). 
+- Haga un Fork de santafe_datavis
+- Creá una rama `git checkout -b mi_rama`
+- Commitá tus cambios `git commit -am 'mensage'`
+- Haga un Push de la rama `git push origin my_rama`
+- Haga un pull request
+
+Estilo de código:
+
+- 80 columnas.
+- Indentación con 2 espacios. No utilice tabs.
+- Primá por la legibilidad.
 
 Cloná el repositório.
 
