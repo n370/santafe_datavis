@@ -1,21 +1,26 @@
 {
   "name": "santafe_datavis",
   "description": "El proyecto de visualización interactiva de datos de la província de Santa Fe, Argentina.",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "preferGlobal": false,
   "private": true,
   "author": {
     "name": "Dylson Valente Neto",
     "email": "dvalenteneto@santafe.gov.ar",
-    "alias": [
-      "n370",
-      "n370n370"
-    ]
+    "alias": ["n370","n370n370"]
   },
   "contributors": [
     {
       "name": "Dylson Valente Neto",
       "email": "dvalenteneto@santafe.gov.ar"
+    },
+    {
+      "name": "Yenier Barcelos",
+      "email": "@santafe.gov.ar"
+    },
+    {
+      "name": "Cesar Hein",
+      "email": "chein@santafe.gov.ar"
     }
   ],
   "repository:": {

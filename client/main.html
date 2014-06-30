@@ -19,13 +19,20 @@
       },  
       "email": ["dvalenteneto@santafe.gov.ar"]
     },
-	{
+	  {
       "name": {
         "first": "Cesar",
         "last": "Hein"
       },  
       "email": ["chein@santafe.gov.ar"]
-    } 
+    },
+    {
+      "name": {
+        "first": "Yenier",
+        "last": "Barcelos"
+      },  
+      "email": ["@santafe.gov.ar"]
+    }  
   ] 
 }
 -->
@@ -39,8 +46,9 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
   <link href="images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="styles/main.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="bower_components/requirejs/require.js"></script>
-
+  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+  <script type="text/javascript" src="bower_components/topojson/topojson.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript">
     var TERMS = 'Esta aplicación se encuentra en pleno desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\nEntre en contacto con el coordinador de proyecto através del correo dvalenteneto@santafe.gov.ar\n\n';
     var SIGNATURE = confirm(TERMS);
@@ -48,71 +56,30 @@
     if (SIGNATURE !== OK) {
       window.stop();
     } 
-
-    requirejs.config({
-        paths: {
-            collections: 'scripts/collections',
-            models: 'scripts/models',
-            views: 'scripts/views',
-            backbone: 'bower_components/backbone/backbone',
-            d3: 'bower_components/d3/d3.min',
-            jquery: 'bower_components/jquery/dist/jquery.min',
-            topojson: 'bower_components/topojson/topojson',
-            underscore: 'bower_components/underscore/underscore'
-        }
-    });
-
-    var dependencies = ['views/structure','views/brand','views/search','collections/Maps'];
-
-    function client(structure,brand,search,maps) {
-      var Structure = new structure.Structure();
-      var Brand = new brand.Brand(); 
-      // var Search = new search.Search();
-      var map_collection = new maps.Maps();
-    }
-
-    requirejs(dependencies, client); // Inicia la aplicación.
-  </script>
-
-  <script type="text/template" id="structure">
-    <section id='main-section' class='flex-container row fixed flex-width-12'>
-      <div id='map-panel' class='flex-1 no-shrink top-layer'>
-        <svg>
-          <g></g>
-        </svg>
-      </div>
-      <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards bottom-layer'>
-        <div id='info-panel-header' class='flex-container row centers'></div>
-        <div id='info-panel-body' class=''>
-          <div id='prueba' class='flex-container row flex-width-12'></div>
-        </div>
-      </div>
-    </section>
-  </script>
-
-  <script type="text/template" id="search">
-    <div class='flex-container flex-width-6 fixed centers column from-top-20'>
-      <div class='flex-container flex-width-10 width-10 centered stretches row easy-shadow'>
-        <input class='padding flex-3 form-font flex-width-3' type='text' placeholder='Haga una búsqueda!'/>
-        <span class='fa fa-search fa-lg button search-button padding flex-container row centers justify-center flex-1'></span>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/template" id="brand">
-    <div class='flex-container flex-width-12 column centers'>
-      <div class='flex-container flex-width-10 column align-right'>
-        <img class='flex-width-3 width-5 from-top-20' src='images/logo.svg'/>
-        </br>
-        <h4>Poder Judicial de la província de Santa Fe</h4>
-        </br>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/template" id="control">
-       <div id='button-<%= name[0] %>' class='flex-container column flex-width-4 text-center button vertically-spaced'><%= name[1] %></div>
   </script>
 </head>
-<body></body>
+<body>
+  <section id='main-section' class='flex-container row fixed flex-width-12'>
+    <div id='map-panel' class='flex-1 no-shrink top-layer'>
+      <svg>
+        <g></g>
+      </svg>
+    </div>
+    <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards bottom-layer'>
+      <div id='info-panel-header' class='flex-container row centers'>
+        <div class='flex-container flex-width-12 column centers'>
+          <div class='flex-container flex-width-10 column align-right'>
+            <img class='flex-width-3 width-5 from-top-20' src='images/logo.svg'/>
+            </br>
+            <h4>Poder Judicial de la província de Santa Fe</h4>
+            </br>
+          </div>
+        </div>
+      </div>
+      <div id='info-panel-body' class=''>
+        <div id='prueba' class='flex-container row flex-width-12'></div>
+      </div>
+    </div>
+  </section>
+</body>
 </html>
