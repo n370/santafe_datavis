@@ -9,7 +9,15 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Santa Fe",
+        "level": "distrito",
+        "id": "1",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -88271,7 +88279,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "San Jorge y El Trébol",
+        "level": "distrito",
+        "id": "11",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -149126,7 +149142,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "San Justo",
+        "level": "distrito",
+        "id": "18",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -167453,7 +167477,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Esperanza",
+        "level": "distrito",
+        "id": "19",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -178102,7 +178134,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "San Javier",
+        "level": "distrito",
+        "id": "20",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -187573,7 +187613,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Helvecia",
+        "level": "distrito",
+        "id": "21",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -190836,7 +190884,15 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "name": "Gálvez y Coronda",
+        "level": "distrito",
+        "id": "22",
+        "group": {
+          "level": "circunscripcion",
+          "id": "1"
+        }
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [

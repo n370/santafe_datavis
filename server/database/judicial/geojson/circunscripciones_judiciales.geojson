@@ -10,7 +10,9 @@
     {
       "type": "Feature",
       "properties": {
-        "rotulo": "santafe"
+        "name": "Santa Fe",
+        "level": "circunscripcion",
+        "id": "1"
       },
       "geometry": {
         "type": "Polygon",
@@ -14563,7 +14565,9 @@
     {
       "type": "Feature",
       "properties": {
-        "rotulo": "rosario"
+        "name": "Rosario",
+        "level": "circunscripcion",
+        "id": "2"
       },
       "geometry": {
         "type": "Polygon",
@@ -31434,7 +31438,9 @@
     {
       "type": "Feature",
       "properties": {
-        "rotulo": "venadotuerto"
+        "name": "Venado Tuerto",
+        "level": "circunscripcion",
+        "id": "3"
       },
       "geometry": {
         "type": "Polygon",
@@ -33443,7 +33449,9 @@
     {
       "type": "Feature",
       "properties": {
-        "rotulo": "reconquista"
+        "name": "Reconquista",
+        "level": "circunscripcion",
+        "id": "4"
       },
       "geometry": {
         "type": "Polygon",
@@ -50506,7 +50514,9 @@
     {
       "type": "Feature",
       "properties": {
-        "rotulo": "rafaela"
+        "name": "Rafaela",
+        "level": "circunscripcion",
+        "id": "5"
       },
       "geometry": {
         "type": "Polygon",
