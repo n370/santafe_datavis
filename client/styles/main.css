@@ -63,8 +63,6 @@
   flex-shrink: 0;
 }
 
-
-
   * {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -78,6 +76,10 @@
     font-family: sans-serif;
     top: 0;
     bottom: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 2em;
   }
 
   .flex-container {
@@ -168,17 +170,17 @@
   #map-panel {
     background: rgba(200,220,230,1);
   }
-  
+
+  #info-panel {
+    background: rgba(240,240,240,1);
+  } 
+
   .top-layer { 
     z-index: 1; 
   }
   
   .bottom-layer { 
     z-index: 0; 
-  }
-
-  #info-panel {
-    background: rgba(240,240,240,1);
   }
 
   .from-top-20 {

@@ -58,10 +58,6 @@
     } 
   </script>
   <style>
-	#map {
-	  background-color: #fff;
-	  border: 1px solid #ccc;
-	}
 	.background {
 	  fill: none;
 	  pointer-events: all;
@@ -93,16 +89,18 @@
 </head>
 <body>
   <section id='main-section' class='flex-container row fixed flex-width-12'>
-    <div id='map' class='flex-1 no-shrink top-layer'>
+    <div id='map-panel' class='flex-1 no-shrink bottom-layer'>
     </div>
-    <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards bottom-layer'>
+    <div id='info-panel' class='flex container row flex-1 no-shrink easy-shadow-backwards top-layer'>
       <div id='info-panel-header' class='flex-container row centers'>
         <div class='flex-container flex-width-12 column centers'>
           <div class='flex-container flex-width-10 column align-right'>
             <img class='flex-width-3 width-5 from-top-20' src='images/logo.svg'/>
-            </br>
-            <h4>Poder Judicial de la província de Santa Fe</h4>
-            </br>
+            <h6>Instituto Provincial de Estadística y Censos</h6>
+            <h6>Centro Estadístico de Servicios</h6>
+            <h6>Departamento de Teleproceso y Telecomunicaciones</h6>
+            <h5>Poder Judicial de la Província de Santa Fe</h5>
+            <h4>Visualizador Judicial</h4>
           </div>
         </div>
       </div>
@@ -113,7 +111,7 @@
   </section>
   
   <script>
-	var m_width = $("#map").width(),
+	var m_width = $("#map-panel").width(),
 		width = 640,
 		height = 930,
 		circunscripcion,
@@ -127,7 +125,7 @@
 	var path = d3.geo.path()
 		.projection(projection);
 
-	var svg = d3.select("#map").append("svg")
+	var svg = d3.select("#map-panel").append("svg")
 		.attr("preserveAspectRatio", "xMidYMid")
 		.attr("viewBox", "0 0 " + width + " " + height)
 		.attr("width", m_width)
@@ -257,7 +255,7 @@
 	}
 
 	$(window).resize(function() {
-	  var w = $("#map").width();
+	  var w = $("#map-panel").width();
 	  svg.attr("width", w);
 	  svg.attr("height", w * height / width);
 	});
