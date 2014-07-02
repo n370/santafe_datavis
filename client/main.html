@@ -13,14 +13,6 @@
   "contributors": [    
     {
       "name": {
-        "first": "Dylson",
-        "last": "Valente Neto",
-        "alias": ["n370", "n370n370"]
-      },  
-      "email": ["dvalenteneto@santafe.gov.ar"]
-    },
-	  {
-      "name": {
         "first": "Cesar",
         "last": "Hein"
       },  
@@ -46,9 +38,6 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">  
   <link href="images/favicon.ico" rel="icon" type="image/ico"/>
   <link href="styles/main.css" rel="stylesheet" type="text/css">
-  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
-  <script type="text/javascript" src="bower_components/topojson/topojson.js"></script>
-  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript">
     var TERMS = 'Esta aplicación se encuentra en pleno desarrollo y puede presentar comportamento indeseable en determinadas situaciones, pressione cancelar para abortar.\n\nEntre en contacto con el coordinador de proyecto através del correo dvalenteneto@santafe.gov.ar\n\n';
     var SIGNATURE = confirm(TERMS);
@@ -57,37 +46,6 @@
       window.stop();
     } 
   </script>
-  <style>
-	.background {
-	  fill: none;
-	  pointer-events: all;
-	}
-	#circunscripciones_judiciales, #distritos {
-	  fill: #cde;
-	  stroke: #fff;
-	  stroke-linejoin: round;
-	  stroke-linecap: round;
-	  cursor: pointer;
-	}
-	#circunscripciones_judiciales .active, #distritos .active {
-	  fill: #89a;
-	}
-	#cities {
-	  stroke-width: 0;
-	  cursor: pointer;
-	}
-	.city {
-	  fill: #345;
-	  stroke: #fff;
-	}
-	.etiqueta {
-	  fill: #777;
-	  fill-opacity: .5;
-	  font-size: 20px;
-	  font-weight: 300;
-	  text-anchor: middle;
-	}
-</style>
 </head>
 <body>
   <section id='main-section' class='flex-container row fixed flex-width-12'>
@@ -111,171 +69,9 @@
       </div>
     </div>
   </section>
-  
-  <script>
-	var m_width = $("#map-panel").width(),
-		width = 640,
-		height = 930,
-		circunscripcion,
-		distrito;
-
-	var projection = d3.geo.mercator()
-		.scale(7000)
-		.center([-61, -32.3])
-		.translate([width / 2, height / 1.5]);
-
-	var path = d3.geo.path()
-		.projection(projection);
-
-	var svg = d3.select("#map-panel").append("svg")
-		.attr("preserveAspectRatio", "xMidYMid")
-		.attr("viewBox", "0 0 " + width + " " + height)
-		.attr("width", m_width)
-		.attr("height", m_width * height / width);
-
-	svg.append("rect")
-		.attr("class", "background")
-		.attr("width", width)
-		.attr("height", height)
-		.on("click", circunscripcion_clicked);
-
-	var g = svg.append("g");
-	var circunscripciones_global;
-
-	d3.json("../server/database/judicial/topojson/circunscripciones_judiciales.topojson", function(error, circunscripciones) {
-	  circunscripciones_global = circunscripciones;
-	  g.append("g")
-		.attr("id", "circunscripciones_judiciales")
-		.selectAll("path")
-		.data(topojson.feature(circunscripciones, circunscripciones.objects.circunscripciones_judiciales).features)
-		.enter()
-		.append("path")
-		.attr("id", function(d) { return d.properties.level+"-"+d.properties.id; })
-		.attr("d", path)
-		.on("click", circunscripcion_clicked);
-		
-			
-	  g.append("g")
-		.attr("id", "circunscripciones_etiquetas")
-		.selectAll(".etiqueta")
-		.data(topojson.feature(circunscripciones, circunscripciones.objects.circunscripciones_judiciales).features)
-		.enter().append("text")
-		.attr("class", function(d) { return "etiqueta " + d.properties.id; })
-		.attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-		.attr("dy", ".35em")
-		.text(function(d) { return d.properties.name; });
-	
-	});
-
-	function zoom(xyz) {
-	  g.transition()
-		.duration(750)
-		.attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
-		.selectAll(["#circunscripciones_judiciales", "#distritos", "#cities"])
-		.style("stroke-width", 1.0 / xyz[2] + "px")
-		.selectAll(".city")
-		.attr("d", path.pointRadius(20.0 / xyz[2]));
-	}
-
-	function get_xyz(d) {
-	  var bounds = path.bounds(d);
-	  var w_scale = (bounds[1][0] - bounds[0][0]) / width;
-	  var h_scale = (bounds[1][1] - bounds[0][1]) / height;
-	  var z = .96 / Math.max(w_scale, h_scale);
-	  var x = (bounds[1][0] + bounds[0][0]) / 2;
-	  var y = (bounds[1][1] + bounds[0][1]) / 2 + (height / z / 6);
-	  return [x, y, z];
-	}
-
-	function circunscripcion_clicked(d) {
-	  g.selectAll(["#distritos", "#cities", "#circunscripciones_etiquetas"]).remove();
-	  distrito = null;
-
-	  if (circunscripcion) {
-		g.selectAll("#" + circunscripcion.properties.id).style('display', null);
-	  }
-
-	  if (d && circunscripcion !== d) {
-		var xyz = get_xyz(d);
-		circunscripcion = d;
-		
-		circunscripcion_code = circunscripcion.properties.id;
-		//console.log(circunscripcion_code);
-
-		if (d.properties.id  == '1') {
-		  d3.json("../server/database/judicial/topojson/distritos_judiciales.topojson", function(error, distritos) {
-			g.append("g")
-			  .attr("id", "distritos")
-			  .selectAll("path")
-			  .data(topojson.feature(distritos, distritos.objects.distritos_judiciales).features.filter(function(d) { 
-			  	console.log(d.properties.group);
-			  	return circunscripcion_code == d.properties.group.id; }))
-			  .enter()
-			  .append("path")
-			  .attr("id", function(d) { return d.properties.level+"-"+d.properties.id; })
-			  .attr("class", "active")
-			  .attr("d", path)
-			  .on("click", distrito_clicked);
-
-			zoom(xyz);
-			g.selectAll("#" + d.id).style('display', 'none');
-		  });      
-		} else {
-		  zoom(xyz);
-		}
-	  } else {
-		var xyz = [width / 2, height / 1.5, 1];
-		circunscripcion = null;
-		
-		g.append("g")
-			.attr("id", "circunscripciones_etiquetas")
-			.selectAll(".etiqueta")
-			.data(topojson.feature(circunscripciones_global, circunscripciones_global.objects.circunscripciones_judiciales).features)
-			.enter().append("text")
-			.attr("class", function(d) { return "etiqueta " + d.id; })
-			.attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-			.attr("dy", ".35em")
-			.text(function(d) { return d.properties.name; });
-		
-		zoom(xyz);
-	  }
-	}
-
-	function distrito_clicked(d) {
-	  g.selectAll("#cities").remove();
-
-	  if (d && distrito !== d) {
-		var xyz = get_xyz(d);
-		distrito = d;
-
-		circunscripcion_code = distrito.id.substring(0, 5).toLowerCase();
-		distrito_name = distrito.properties.name;
-
-		d3.json("../server/database/judicial/topojson/cities_" + circunscripcion_code + ".topo.json", function(error, us) {
-		  g.append("g")
-			.attr("id", "cities")
-			.selectAll("path")
-			.data(topojson.feature(us, us.objects.cities).features.filter(function(d) { return distrito_name == d.properties.distrito; }))
-			.enter()
-			.append("path")
-			.attr("id", function(d) { return d.properties.name; })
-			.attr("class", "city")
-			.attr("d", path.pointRadius(20 / xyz[2]));
-
-		  zoom(xyz);
-		});      
-	  } else {
-		distrito = null;
-		circunscripcion_clicked(circunscripcion);
-	  }
-	}
-
-	$(window).resize(function() {
-	  var w = $("#map-panel").width();
-	  svg.attr("width", w);
-	  svg.attr("height", w * height / width);
-	});
-  </script>
-
+  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+  <script type="text/javascript" src="bower_components/topojson/topojson.js"></script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="scripts/main.js"></script>
 </body>
 </html>

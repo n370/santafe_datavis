@@ -1,53 +1,70 @@
-Visualización Interactiva de Datos
-----------------------------------
+Visualizador Judicial
+---------------------
 
-### IPEC — Instituto Provincial de Estadística y Censos
+### IPEC — Instituto Provincial de Estadistica y Censos
+#### Centro Estadistico de Servicios 
 Santa Fe, La Capital 2014
 
 #### Presentación
-El presente proyecto es una iniciativa del departamento de informática con objetivo de atualizar las herramientas digitales para publicación y visualización de datos estadísticos de la província.
+El presente proyecto es una iniciativa del Departamento de Teleproceso y Telecomunicaciones con objetivo de atualizar las herramientas digitales de la província para visualización de datos estadísticos.
 
-Actualmente trabajamos las visualizaciones en caracter experimental. Con una mirada hacia el futuro, utilizamos software en version beta y especificaciones con implelmentación en andamento.
+#### Herramientas
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Python](https://www.python.org/), [PHP](http://php.net/), [Google Fonts](http://www.google.com/fonts), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), [jQuery](http://jquery.com/), [D3](http://d3js.org/), [HTML](http://www.w3.org/html/wg/drafts/html/master/), [CSS](http://www.w3.org/TR/css-2010/), [JSON](http://json.org/), [GeoJSON](http://geojson.org/), [TopoJSON](http://github.com/mbostock/topojson), [Bower](http://bower.io/), [Mapshaper](https://github.com/mbloch/mapshaper), [QGIS](http://www.qgis.org/). 
 
-#### Biblioteca
-[PostgreSQL](http://www.postgresql.org/), [Postgis](http://postgis.net/), [Require.js](http://requirejs.org/), [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Google Fonts](http://www.google.com/fonts), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), [Backbone](http://backbonejs.org/), [Underscore](http://underscorejs.org/), [jQuery](http://jquery.com/), [D3](http://d3js.org/), [node-postgres](https://github.com/brianc/node-postgres/), [node-uuid](https://github.com/broofa/node-uuid/), [HTML](http://www.w3.org/html/wg/drafts/html/master/), [CSS](http://www.w3.org/TR/css-2010/), [JSON](http://json.org/), [GeoJSON](http://geojson.org/), [JSON-js](https://github.com/douglascrockford/JSON-js), [TopoJSON](http://github.com/mbostock/topojson), [CDNJS](http://cdnjs.com/), [Mapshaper](https://github.com/mbloch/mapshaper). 
+#### Rodando
+Instale [Git](http://git-scm.com/).  
+Instale [Node.js](http://nodejs.org/).  
+Cloná el repositório.
+
+	$ git clone https://github.com/n370/santafe_datavis.git
+	$ cd santafe_datavis
+
+Instale [Bower](http://bower.io/) y en seguida las dependencias deste proyecto.
+
+	$ bower install
+
+Cargá un servidor HTTP para los archivos estáticos.
+
+	$ cd client
+    $ python -m SimpleHTTPServer 1337
+
+o
+        
+    $ cd client
+	$ php -S localhost:1337
+
+Visitá [http://localhost:1337/main.html](http://localhost:1337/main.html) en tu navegador.
 
 #### Contribuyendo
-
-¡Estamos contentos por que querés contribuir! es simples:
-
-- Instale [Node.js](http://nodejs.org/).  
-- Instale [Git](http://git-scm.com/). 
-- Haga un Fork de santafe_datavis
-- Creá una rama `git checkout -b mi_rama`
-- Commitá tus cambios `git commit -am 'mensage'`
-- Haga un Push de la rama `git push origin my_rama`
-- Haga un pull request
-
-Estilo de código:
+Estamos contentos por que querés contribuir, pero atención al estilo del código:
 
 - 80 columnas.
 - Indentación con 2 espacios. No utilice tabs.
 - Primá por la legibilidad.
 
-Cloná el repositório.
+Instale [Git](http://git-scm.com/).  
+Instale [Node.js](http://nodejs.org/).  
+Forkeá este repositório.  
+Creá una rama en tu repositorio local:
 
-	$ git clone https://github.com/n370/santafe_datavis
+	$ git checkout -b mi_rama
 
-Cargá un servidor HTTP para los archivos estáticos.
+Instale [Bower](http://bower.io/) y en seguida las dependencias deste proyecto.
 
-	$ cd santafe_datavis
-	$ npm install
 	$ bower install
-	$ npm start
 
-Visitá [http://localhost:1337/](http://localhost:1337/) en tu navegador.
+Si necesario, instale nuevas dependencias.
 
-#### Screenshots
-![20140207_001](docs/screenshots/20140207_001.png)
-![20140207_002](docs/screenshots/20140207_002.png)
-![20140507_001](docs/screenshots/20140507_001.png)
-![20140512_001](docs/screenshots/20140512_001.png)
-![20140512_002](docs/screenshots/20140512_002.png)
-![20140608_001](docs/screenshots/20140608_001.png)
-![20140613_001](docs/screenshots/20140613_001.png)
+	$ bower install --save nueva_dependencia
+
+Seguí con unas modificaciones!
+
+Commitá estos cambios:
+
+	$ git commit -am 'Un mensage relevante. Cuanto más mejor, pero no más de 70 columnas por línea.'
+
+Hacé un `push` de tu rama:
+
+	$ git push origin mi_rama
+
+Creá un Pull Request acá.

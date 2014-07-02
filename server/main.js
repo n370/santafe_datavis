@@ -26,11 +26,14 @@
 var express = require('express'),
     server = express();
 
-var staticFiles = express.static('./client', {
-  'index': ['main.html', 'main.htm']
+var clientFiles = express.static('./', {
+  'index': ['client/main.html', 'client/main.htm']
 });
 
-server.use('/', staticFiles);
+var serverFiles = express.static('./server');
+
+server.use('/', clientFiles);
+server.use('/server', serverFiles);
 
 server.listen(1337);
 console.log('HTTP server running on port 1337');

@@ -13,12 +13,18 @@
   "contributors": [    
     {
       "name": {
-        "first": "Dylson",
-        "last": "Valente Neto",
-        "alias": ["n370", "n370n370"]
+        "first": "Cesar",
+        "last": "Hein"
       },  
-      "email": ["dvalenteneto@santafe.gov.ar"]
-    } 
+      "email": ["chein@santafe.gov.ar"]
+    },
+    {
+      "name": {
+        "first": "Yenier",
+        "last": "Barcelo"
+      },  
+      "email": ["ybarcelo@santafe.gov.ar"]
+    }  
   ] 
 }
 */
@@ -168,7 +174,7 @@
   }
 
   #map-panel {
-    background: white;
+    background: rgba(200,220,230,1);
   }
 
   #info-panel {
@@ -203,7 +209,12 @@
   .search-button {
     background: gray;
     color: silver;
-    text-shadow: rgba(0,0,0,0.1) -1px 0, rgba(0,0,0,0.1) 0 -1px, rgba(255,255,255,0.1) 1px 0, rgba(255,255,255,0.1) 0 1px,rgba(0,0,0,0.1) -1px -1px, rgba(255,255,255,0.1) 1px 1px;
+    text-shadow: rgba(0,0,0,0.1) -1px 0, 
+                 rgba(0,0,0,0.1) 0 -1px, 
+                 rgba(255,255,255,0.1) 1px 0, 
+                 rgba(255,255,255,0.1) 0 1px,
+                 rgba(0,0,0,0.1) -1px -1px, 
+                 rgba(255,255,255,0.1) 1px 1px;
   }
 
   .flex-width-1 {
@@ -298,4 +309,41 @@
   .width-10 {
     min-width: 320px;
   }
+}
+
+/*****************************************************************************/
+/*********************************** D3 **************************************/
+/*****************************************************************************/
+
+#circunscripciones_judiciales, #distritos {
+  fill: rgb(133, 168, 135);
+  stroke: #fff;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+#circunscripciones_judiciales .active, #distritos .active {
+  fill: rgb(94, 136, 95);
+}
+
+.circuito {
+  fill: rgb(84, 111, 86);
+  stroke: #fff;
+  stroke-width: 0.5;
+}
+
+.etiqueta {
+  fill: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.no-fill {
+  fill: none;
+}
+
+.selectable {
+  cursor: pointer;
+  pointer-events: all;
 }
