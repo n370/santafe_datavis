@@ -142,7 +142,7 @@
 	var g = svg.append("g");
 	var circunscripciones_global;
 
-	d3.json("../server/database/judicial/topojson/circunscripciones_judiciales2.topojson", function(error, circunscripciones) {
+	d3.json("../server/database/judicial/topojson/circunscripciones_judiciales.topojson", function(error, circunscripciones) {
 	  circunscripciones_global = circunscripciones;
 	  g.append("g")
 		.attr("id", "circunscripciones_judiciales")
@@ -150,7 +150,7 @@
 		.data(topojson.feature(circunscripciones, circunscripciones.objects.circunscripciones_judiciales).features)
 		.enter()
 		.append("path")
-		.attr("id", function(d) { return d.id; })
+		.attr("id", function(d) { return d.properties.level+"-"+d.properties.id; })
 		.attr("d", path)
 		.on("click", circunscripcion_clicked);
 		
@@ -160,7 +160,7 @@
 		.selectAll(".etiqueta")
 		.data(topojson.feature(circunscripciones, circunscripciones.objects.circunscripciones_judiciales).features)
 		.enter().append("text")
-		.attr("class", function(d) { return "etiqueta " + d.id; })
+		.attr("class", function(d) { return "etiqueta " + d.properties.id; })
 		.attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
 		.attr("dy", ".35em")
 		.text(function(d) { return d.properties.name; });
@@ -192,24 +192,27 @@
 	  distrito = null;
 
 	  if (circunscripcion) {
-		g.selectAll("#" + circunscripcion.id).style('display', null);
+		g.selectAll("#" + circunscripcion.properties.id).style('display', null);
 	  }
 
 	  if (d && circunscripcion !== d) {
 		var xyz = get_xyz(d);
 		circunscripcion = d;
 		
-		circunscripcion_code = circunscripcion.id;
+		circunscripcion_code = circunscripcion.properties.id;
+		//console.log(circunscripcion_code);
 
-		if (d.id  == 'CIRC1' || d.id == 'JPN') {
-		  d3.json("../server/database/judicial/topojson/distritos_judiciales2.topojson", function(error, distritos) {
+		if (d.properties.id  == '1') {
+		  d3.json("../server/database/judicial/topojson/distritos_judiciales.topojson", function(error, distritos) {
 			g.append("g")
 			  .attr("id", "distritos")
 			  .selectAll("path")
-			  .data(topojson.feature(distritos, distritos.objects.distritos_judiciales).features.filter(function(d) { return circunscripcion_code == d.properties.circunscripcion; }))
+			  .data(topojson.feature(distritos, distritos.objects.distritos_judiciales).features.filter(function(d) { 
+			  	console.log(d.properties.group);
+			  	return circunscripcion_code == d.properties.group.id; }))
 			  .enter()
 			  .append("path")
-			  .attr("id", function(d) { return d.id; })
+			  .attr("id", function(d) { return d.properties.level+"-"+d.properties.id; })
 			  .attr("class", "active")
 			  .attr("d", path)
 			  .on("click", distrito_clicked);
