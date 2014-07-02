@@ -66,14 +66,14 @@
 	  fill: none;
 	  pointer-events: all;
 	}
-	#circunscripciones_judiciales, #states {
+	#circunscripciones_judiciales, #distritos {
 	  fill: #cde;
 	  stroke: #fff;
 	  stroke-linejoin: round;
 	  stroke-linecap: round;
 	  cursor: pointer;
 	}
-	#circunscripciones_judiciales .active, #states .active {
+	#circunscripciones_judiciales .active, #distritos .active {
 	  fill: #89a;
 	}
 	#cities {
@@ -117,7 +117,7 @@
 		width = 640,
 		height = 930,
 		circunscripcion,
-		state;
+		distrito;
 
 	var projection = d3.geo.mercator()
 		.scale(7000)
@@ -140,8 +140,9 @@
 		.on("click", circunscripcion_clicked);
 
 	var g = svg.append("g");
+	var g2 = svg.append("g");
 
-	d3.json("../server/database/judicial/topojson/circunscripciones_judiciales.topojson", function(error, circunscripciones) {
+	d3.json("../server/database/judicial/topojson/circunscripciones_judiciales2.topojson", function(error, circunscripciones) {
 	  g.append("g")
 		.attr("id", "circunscripciones_judiciales")
 		.selectAll("path")
@@ -151,13 +152,25 @@
 		.attr("id", function(d) { return d.id; })
 		.attr("d", path)
 		.on("click", circunscripcion_clicked);
+		
+			
+	  g2.append("g")
+		.attr("id", "circunscripciones_etiquetas")
+		.selectAll(".etiqueta")
+		.data(topojson.feature(circunscripciones, circunscripciones.objects.circunscripciones_judiciales).features)
+		.enter().append("text")
+		.attr("class", function(d) { return "etiqueta " + d.id; })
+		.attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+		.attr("dy", ".35em")
+		.text(function(d) { return d.properties.name; });
+	
 	});
 
 	function zoom(xyz) {
 	  g.transition()
 		.duration(750)
 		.attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
-		.selectAll(["#circunscripciones_judiciales", "#states", "#cities"])
+		.selectAll(["#circunscripciones_judiciales", "#distritos", "#cities"])
 		.style("stroke-width", 1.0 / xyz[2] + "px")
 		.selectAll(".city")
 		.attr("d", path.pointRadius(20.0 / xyz[2]));
@@ -174,8 +187,8 @@
 	}
 
 	function circunscripcion_clicked(d) {
-	  g.selectAll(["#states", "#cities"]).remove();
-	  state = null;
+	  g.selectAll(["#distritos", "#cities"]).remove();
+	  distrito = null;
 
 	  if (circunscripcion) {
 		g.selectAll("#" + circunscripcion.id).style('display', null);
@@ -184,19 +197,22 @@
 	  if (d && circunscripcion !== d) {
 		var xyz = get_xyz(d);
 		circunscripcion = d;
+		
+		circunscripcion_code = circunscripcion.id;
 
-		if (d.id  == 'USA' || d.id == 'JPN') {
-		  d3.json("../server/database/judicial/topojson/states_" + d.id.toLowerCase() + ".topo.json", function(error, us) {
+		if (d.id  == 'CIRC1' || d.id == 'JPN') {
+		  d3.json("../server/database/judicial/topojson/distritos_judiciales2.topojson", function(error, distritos) {
 			g.append("g")
-			  .attr("id", "states")
+			  .attr("id", "distritos")
 			  .selectAll("path")
-			  .data(topojson.feature(us, us.objects.states).features)
+			  .data(topojson.feature(distritos, distritos.objects.distritos_judiciales).features.filter(function(d) { return circunscripcion_code == d.properties.circunscripcion; }))
 			  .enter()
 			  .append("path")
 			  .attr("id", function(d) { return d.id; })
 			  .attr("class", "active")
 			  .attr("d", path)
-			  .on("click", state_clicked);
+			  .text(function(d) { return d.properties.name; })
+			  .on("click", distrito_clicked);
 
 			zoom(xyz);
 			g.selectAll("#" + d.id).style('display', 'none');
@@ -211,21 +227,21 @@
 	  }
 	}
 
-	function state_clicked(d) {
+	function distrito_clicked(d) {
 	  g.selectAll("#cities").remove();
 
-	  if (d && state !== d) {
+	  if (d && distrito !== d) {
 		var xyz = get_xyz(d);
-		state = d;
+		distrito = d;
 
-		circunscripcion_code = state.id.substring(0, 3).toLowerCase();
-		state_name = state.properties.name;
+		circunscripcion_code = distrito.id.substring(0, 5).toLowerCase();
+		distrito_name = distrito.properties.name;
 
 		d3.json("../server/database/judicial/topojson/cities_" + circunscripcion_code + ".topo.json", function(error, us) {
 		  g.append("g")
 			.attr("id", "cities")
 			.selectAll("path")
-			.data(topojson.feature(us, us.objects.cities).features.filter(function(d) { return state_name == d.properties.state; }))
+			.data(topojson.feature(us, us.objects.cities).features.filter(function(d) { return distrito_name == d.properties.distrito; }))
 			.enter()
 			.append("path")
 			.attr("id", function(d) { return d.properties.name; })
@@ -235,7 +251,7 @@
 		  zoom(xyz);
 		});      
 	  } else {
-		state = null;
+		distrito = null;
 		circunscripcion_clicked(circunscripcion);
 	  }
 	}
