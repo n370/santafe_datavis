@@ -1,5 +1,5 @@
-Visualizador Judicial
----------------------
+Visualizador de Datos del Ministerio de Justicia de Santa Fe
+------------------------------------------------------------
 
 ### IPEC — Instituto Provincial de Estadistica y Censos
 #### Centro Estadistico de Servicios 
@@ -9,7 +9,7 @@ Santa Fe, La Capital 2014
 El presente proyecto es una iniciativa del Departamento de Teleproceso y Telecomunicaciones con objetivo de atualizar las herramientas digitales de la província para visualización de datos estadísticos.
 
 #### Herramientas
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Python](https://www.python.org/), [PHP](http://php.net/), [Google Fonts](http://www.google.com/fonts), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), [jQuery](http://jquery.com/), [D3](http://d3js.org/), [HTML](http://www.w3.org/html/wg/drafts/html/master/), [CSS](http://www.w3.org/TR/css-2010/), [JSON](http://json.org/), [GeoJSON](http://geojson.org/), [TopoJSON](http://github.com/mbostock/topojson), [Bower](http://bower.io/), [Mapshaper](https://github.com/mbloch/mapshaper), [QGIS](http://www.qgis.org/). 
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616.html), [Google Fonts](http://www.google.com/fonts), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), [jQuery](http://jquery.com/), [D3](http://d3js.org/), [HTML](http://www.w3.org/html/wg/drafts/html/master/), [CSS](http://www.w3.org/TR/css-2010/), [JSON](http://json.org/), [GeoJSON](http://geojson.org/), [TopoJSON](http://github.com/mbostock/topojson), [Bower](http://bower.io/), [Mapshaper](https://github.com/mbloch/mapshaper), [QGIS](http://www.qgis.org/). 
 
 #### Rodando
 Instale [Git](http://git-scm.com/).  
@@ -55,7 +55,7 @@ Instale [Bower](http://bower.io/) y en seguida las dependencias deste proyecto.
 
 Si necesario, instale nuevas dependencias.
 
-	$ bower install --save nueva_dependencia
+	$ bower install --save bower_component
 
 Seguí con unas modificaciones!
 
