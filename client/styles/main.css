@@ -84,6 +84,11 @@
     bottom: 0;
   }
 
+  .title {
+    background: rgb(200,200,200);
+    padding: 0.2em 0;
+  }
+
   h1 {
     line-height: 2em;
   }
@@ -97,7 +102,7 @@
   } 
 
   h4 {
-    line-height: 1.2em;
+    line-height: 1.4em;
   }
 
   h5 {
@@ -105,7 +110,7 @@
   }
   
   h6 {
-    line-height: 1.4em;
+    line-height: 0.2em;
   }
 
   .flex-container {
@@ -213,6 +218,10 @@
     margin-top: 20px;
   }
   
+  .from-top-40 {
+    margin-top: 40px;
+  }
+
   .button {
     cursor: pointer;
     background: rgba(200,200,200,1);
