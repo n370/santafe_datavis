@@ -339,6 +339,24 @@
   text-anchor: middle;
 }
 
+.etiqueta-distrito {
+  fill: rgb(255, 255, 255);
+  font-size: 7px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+.etiqueta-circuito {
+  fill: rgb(255, 255, 255);
+  font-size: 3px;
+  font-weight: 800;
+  text-anchor: middle;
+}
+
+#distrito-1 {
+  text-anchor: start;
+}
+
 .no-fill {
   fill: none;
 }

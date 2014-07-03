@@ -30,14 +30,14 @@
 */
 
 var m_width = $("#map-panel").width(),
-  width = 640,
-  height = 930,
+  width = $("#map-panel").width(),
+  height = $("#map-panel").height(),
   topojsonPath = "database/judicial/topojson",
   circunscripcion,
   distrito;
 
 var projection = d3.geo.mercator()
-  .scale(7000)
+  .scale(5000)
   .center([-61, -32.3])
   .translate([width / 2, height / 1.5]);
 
@@ -83,7 +83,16 @@ d3.json(circunPath, function(error, circunscripciones) {
   .attr("class", function(d) { return "etiqueta " + d.properties.id; })
   .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
   .attr("dy", ".35em")
-  .text(function(d) { return d.properties.name; });
+  .text(function(d) { return d.properties.id; });
+
+
+  referencias = '<h1>Referencias</h1><h4>Circunscripciones</h4><p>';
+  $.each( circunscripciones.objects.circunscripciones_judiciales.geometries, function( key, value ) {
+    referencias += '<strong>'+value.properties.id+'.</strong> '+value.properties.name+'<br/>';
+  });
+  
+  referencias += '</p>';
+  $('#referencias').html(referencias);
 
 });
 
@@ -108,7 +117,7 @@ function get_xyz(d) {
 }
 
 function circunscripcion_clicked(d) {
-  g.selectAll(["#distritos", "#circuitos", "#circunscripciones_etiquetas"]).remove();
+  g.selectAll(["#distritos", "#circuitos", "#circunscripciones_etiquetas", "#distritos_etiquetas", "#circuitos_etiquetas"]).remove();
   distrito = null;
 
   if (circunscripcion) {
@@ -154,9 +163,29 @@ function circunscripcion_clicked(d) {
           .attr("d", path)
           .on("click", distrito_clicked);
 
+        g.append("g")
+          .attr("id", "distritos_etiquetas")
+          .selectAll(".etiqueta-distrito")
+          .data(topo.features.filter(filterMe))
+          .enter().append("text")
+          .attr("class", function(d) { return "etiqueta-distrito " + d.properties.id; })
+          .attr("id",  function(d) { return "distrito-" + d.properties.id; })
+          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+          .attr("dy", ".25em")
+          .text(function(d) { return d.properties.id; });
+
         zoom(xyz);
 
         g.selectAll("#" + d.id).style('display', 'none');       
+
+        referencias = '<h1>Referencias</h1><h4>Distritos</h4><p>';
+        $.each( topo.features.filter(filterMe), function( key, value ) {
+          referencias += '<strong>'+value.properties.id+'.</strong> '+value.properties.name+'<br/>';
+        });
+        
+        referencias += '</p>';
+        $('#referencias').html(referencias);
+
       });
     } else {
       zoom(xyz);
@@ -174,14 +203,22 @@ function circunscripcion_clicked(d) {
       .attr("class", function(d) { return "etiqueta " + d.id; })
       .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
       .attr("dy", ".35em")
-      .text(function(d) { return d.properties.name; });
+      .text(function(d) { return d.properties.id; });
     
+    referencias = '<h1>Referencias</h1><h4>Circunscripciones</h4><p>';
+    $.each( circunscripciones_global.objects.circunscripciones_judiciales.geometries, function( key, value ) {
+      referencias += '<strong>'+value.properties.id+'.</strong> '+value.properties.name+'<br/>';
+    });
+    
+    referencias += '</p>';
+    $('#referencias').html(referencias);
+
     zoom(xyz);
   }
 } // Closes circunscription_clicked.
 
 function distrito_clicked(d) {
-  g.selectAll("#cities").remove();
+  g.selectAll(["#cities", "#distritos_etiquetas", "#circuitos_etiquetas"]).remove();
 
   if (d && distrito !== d) {
     var xyz = get_xyz(d);
@@ -207,16 +244,36 @@ function distrito_clicked(d) {
       }
 
       g.append("g")
-      .attr("id", "circuitos")
-      .selectAll("path")
-      .data(topo.features.filter(filterMe))
-      .enter()
-      .append("path")
-      .attr("id", makeID)
-      .attr("class", "circuito")
-      .attr("d", path.pointRadius(20 / xyz[2]));
+        .attr("id", "circuitos")
+        .selectAll("path")
+        .data(topo.features.filter(filterMe))
+        .enter()
+        .append("path")
+        .attr("id", makeID)
+        .attr("class", "circuito")
+        .attr("d", path.pointRadius(20 / xyz[2]));
+
+      g.append("g")
+        .attr("id", "circuitos_etiquetas")
+        .selectAll(".etiqueta-circuiros")
+        .data(topo.features.filter(filterMe))
+        .enter().append("text")
+        .attr("class", function(d) { return "etiqueta-circuito " + d.properties.id; })
+        .attr("id",  function(d) { return "circuito-" + d.properties.id; })
+        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        .attr("dy", ".15em")
+        .text(function(d) { return d.properties.id; });
 
       zoom(xyz);
+
+      referencias = '<h1>Referencias</h1><h4>Circuitos</h4><p>';
+      $.each( topo.features.filter(filterMe), function( key, value ) {
+        referencias += '<strong>'+value.properties.id+'.</strong> '+value.properties.name+'<br/>';
+      });
+      
+      referencias += '</p>';
+      $('#referencias').html(referencias);
+
     });      
   } else {
     distrito = null;
