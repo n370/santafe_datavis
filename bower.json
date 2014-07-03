@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "homepage": "https://github.com/n370/santafe_datavis",
   "authors": [
-    "Dylson Valente Neto <dylsonvalenteneto@gmail.com>"
+    "Dylson Valente Neto <dylsonvalenteneto@gmail.com>", 
+    "Yenier Barcelo <ybarcelo@santafe.gov.ar>",
+    "Cesar Hein <chein@santafe.gov.ar>"
   ],
   "moduleType": [
     "amd"
@@ -17,10 +19,7 @@
     "tests"
   ],
   "dependencies": {
-    "requirejs": "~2.1.11",
     "jquery": "~2.1.1",
-    "underscore": "~1.6.0",
-    "backbone": "~1.1.2",
     "d3": "~3.4.8",
     "topojson": "~1.6.13",
     "fontawesome": "~4.1.0"

@@ -29,8 +29,12 @@
 }
 */
 
-var m_width = $("#map-panel").width(),
-  width = $("#map-panel").width(),
+function resizeSVG(width, height) {
+  this.width = width;
+  this.height = height;
+}
+
+var width = $("#map-panel").width(),
   height = $("#map-panel").height(),
   topojsonPath = "database/judicial/topojson",
   circunscripcion,
@@ -43,12 +47,20 @@ var projection = d3.geo.mercator()
 
 var path = d3.geo.path()
   .projection(projection);
+  
+var svgSizes = new resizeSVG(width, height);
+
+window.onresize = function() {
+  svgSizes.width = $("#map-panel").width();
+  svgSizes.height = $("#map-panel").height();
+  $("#map-panel").css('width',svgSizes.width);
+  $("#map-panel").css('height',svgSizes.height);
+} 
 
 var svg = d3.select("#map-panel").append("svg")
-  .attr("preserveAspectRatio", "xMidYMid")
-  .attr("viewBox", "0 0 " + width + " " + height)
-  .attr("width", m_width)
-  .attr("height", m_width * height / width);
+  .attr("viewBox", "0 0 " + svgSizes.width + " " + svgSizes.height)
+  .attr("width", svgSizes.width)
+  .attr("height", svgSizes.height);
 
 svg.append("rect")
   .attr("class", "no-fill selectable")
